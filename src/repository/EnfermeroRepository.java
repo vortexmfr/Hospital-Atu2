@@ -1,7 +1,12 @@
 package repository;
 
-public class EnfermeroRepository {
-    // 200 enfermero
+import entity.Enfermero;
+import entity.Medico;
 
-    // Dar de alta un paciente
+import java.util.HashMap;
+import java.util.Map;
+
+public class EnfermeroRepository {
+    Map<String, Enfermero> enfermeros = new HashMap<>();
+
 }
