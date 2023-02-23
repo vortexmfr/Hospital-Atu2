@@ -79,17 +79,4 @@ public class Persona {
     public void setEstancia(UBICACION estancia) {
         this.estancia = estancia;
     }
-
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "dni='" + dni + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", usuario='" + usuario + '\'' +
-                ", password='" + password + '\'' +
-                ", estancia=" + estancia +
-                '}';
-    }
 }
