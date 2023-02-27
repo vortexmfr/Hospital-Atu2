@@ -16,7 +16,8 @@ USE `hospitalAtu`;
 --
 -- Drop tables if they already exist
 --
-DROP TABLE IF EXISTS `patients`;
+
+
 DROP TABLE IF EXISTS `doctors`;
 DROP TABLE IF EXISTS `nurseys`;
 DROP TABLE IF EXISTS `historic`;
@@ -26,6 +27,8 @@ DROP TABLE IF EXISTS `diseasespeciality`;
 DROP TABLE IF EXISTS `speciality`;
 DROP TABLE IF EXISTS `patientdisease`;
 DROP TABLE IF EXISTS `admin`;
+DROP TABLE IF EXISTS `patients`;
+DROP TABLE IF EXISTS `persona`;
 
 -- --------------------------------------------------------
 
@@ -51,82 +54,98 @@ INSERT INTO `admin` (`adminId`, `userName`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `persona`
+--
+
+CREATE TABLE IF NOT EXISTS `persona` (
+  `dni` varchar(12) NOT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `lastName` varchar(50) NOT NULL,
+  `password` varchar(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `birthdate` date NOT NULL,
+  `role` enum ('admin', 'doctor','nursey','patient') NOT NULL,
+  `create_at` timestamp,
+  PRIMARY KEY (`dni`)
+) ENGINE=Innodb  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `persona`
+--
+
+INSERT INTO `persona` (`firstName`, `lastName`, `password`,`email`, `dni`,`birthdate`, `role`) VALUES
+('Paco', 'Perez','abc123', '1223563-W','pacoperez@somewhere.com', '1967-12-01', 2),
+('Pepe', 'Fdez','abc123', '5256458-P', 'pepefdez@somewhere.com', '1989-03-02', 4),
+('Luis', 'Martinez', 'abc123', '45859586-Y','luismartinez@somewhere.com', '1974-06-06', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctors`
 --
 
 CREATE TABLE IF NOT EXISTS `doctors` (
-  `doctorId` int(11) NOT NULL AUTO_INCREMENT,
+  `dni` varchar(12) NOT NULL,
   `colegiatenumber` varchar(50) NOT NULL,
-  `firstName` varchar(50) NOT NULL,
-  `lastName` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `userName` varchar(15) NOT NULL,
-  `password` varchar(10) NOT NULL,
   `speciality` varchar(29) NOT NULL,
   `create_at` timestamp,
-  PRIMARY KEY (`doctorId`)
+  PRIMARY KEY (`dni`),
+  CONSTRAINT `fk_person_doctor` FOREIGN KEY (dni) REFERENCES persona(dni)
 ) ENGINE=Innodb  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `doctors`
 --
 
-INSERT INTO `doctors` (`doctorId`, `colegiatenumber`, `firstName`, `lastName`, `email`, `userName`, `password`, `speciality`) VALUES
-(1, '2141', 'Paco', 'Perez', 'pacoperez@somewhere.com', 'pperez', 'abc123', 'Cardiologo'),
-(2, '2142', 'Pepe', 'Fdez', 'pepefdez@somewhere.com', 'pfdez', 'abc123', 'Neumologo'),
-(3, '2143', 'Luis', 'Martinez', 'luismartinez@somewhere.com', 'lmartinez', 'abc123', 'Otorrino');
+INSERT INTO `doctors` (`dni`,`colegiatenumber`,`speciality`) VALUES
+('1223563-W', '2141', 'Cardiologo'),
+('1223563-W', '2142', 'Neumologo'),
+('1223563-W', '2143', 'Otorrino');
 
 
--- --------------------------------------------------------
+----------------------------------------------------------
 
 --
 -- Table structure for table `nurseys`
 --
 
 CREATE TABLE IF NOT EXISTS `nurseys` (
-  `nurseysId` int(11) NOT NULL AUTO_INCREMENT,
+  `dni` varchar(12) NOT NULL,
   `colegiatenumber` varchar(50) NOT NULL,
-  `firstName` varchar(50) NOT NULL,
-  `lastName` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `userName` varchar(15) NOT NULL,
-  `password` varchar(10) NOT NULL,
   `speciality` varchar(29) NOT NULL,
   `create_at` timestamp,
-  PRIMARY KEY (`nurseysId`)
+  PRIMARY KEY (`dni`),
+  CONSTRAINT `fk_person_nursey` FOREIGN KEY (dni) REFERENCES persona(dni)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `nurseys`
 --
-INSERT INTO `nurseys` (`nurseysId`, `colegiatenumber`, `firstName`, `lastName`, `email`, `userName`, `password`, `speciality`) VALUES
-(1, '1041', 'Paco', 'Martinez', 'pacomartinez@somewhere.com', 'pmartinez', 'abc123', 'UVI'),
-(2, '1042', 'Jose', 'Fdez', 'Josefdez@somewhere.com', 'jfdez', 'abc123', 'REA'),
-(3, '1043', 'Maria', 'Martinez', 'mariamartinez@somewhere.com', 'mmartinez', 'abc123', 'Planta');
+INSERT INTO `nurseys` (`dni`, `colegiatenumber`, `speciality`) VALUES
+('45859586-Y', '1041','UVI'),
+('87656783-P', '1042','REA'),
+('6483945-W', '1043','Planta');
 
 -- --------------------------------------------------------
 
 
 CREATE TABLE IF NOT EXISTS `patients` (
-  `patientId` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(50) NOT NULL,
-  `lastName` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `userName` varchar(15) NOT NULL,
-  `password` varchar(10) NOT NULL,
+  `dni` varchar(12) NOT NULL,
   `urgencyLevel` tinyint NOT NULL,
   `desease` varchar(29) NOT NULL,
+  `historicId` int(11) NOT NULL AUTO_INCREMENT,
   `create_at` timestamp current_timestamp,
-  PRIMARY KEY (`patientId`)
+  PRIMARY KEY (`dni`),
+  CONSTRAINT `fk_person_patients` FOREIGN KEY (dni) REFERENCES persona(dni)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `patients`
 --
-INSERT INTO `patients` (`patientId`, `firstName`, `lastName`, `email`, `userName`, `password`, `urgencyLevel`,`desease` ) VALUES
-(1,  'Nuria', 'Velasco', 'nuriavelasco@somewhere.com', 'nvelasco', 'abc123', '3', 'Pulmonia'),
-(2,  'Jose', 'Martin', 'josemartin@somewhere.com', 'jmartin', 'abc123', '2', 'Amigdalitis'),
-(3,  'Maria', 'Lopez', 'marialopez@somewhere.com', 'mlopez', 'abc123', '1', 'Infarto');
+INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`,`historicId` ) VALUES
+('45859586-Y','3', 'Pulmonia'),
+('36486483-H','2', 'Amigdalitis'),
+('36475637-L', '1', 'Infarto');
 
 
 --
