@@ -1,4 +1,3 @@
-
 -- Host: localhost
 -- Generation Time:
 -- Server version:
@@ -73,12 +72,17 @@ CREATE TABLE IF NOT EXISTS `persona` (
 -- Dumping data for table `persona`
 --
 
-INSERT INTO `persona` (`firstName`, `lastName`, `password`,`email`, `dni`,`birthdate`, `role`) VALUES
+INSERT INTO `persona` (`firstName`, `lastName`, `password`,`dni`, `email`,`birthdate`, `role`) VALUES
 ('Paco', 'Perez','abc123', '1223563-W','pacoperez@somewhere.com', '1967-12-01', 2),
+('Manuel', 'Puzela','abc123', '1223564-W','manuelpuzela@somewhere.com', '1981-12-01', 2),
+('Margarita', 'Alonso','abc123', '1223565-W','margaritaalonso@somewhere.com', '1973-12-01', 2),
 ('Pepe', 'Fdez','abc123', '5256458-P', 'pepefdez@somewhere.com', '1989-03-02', 4),
-('Luis', 'Martinez', 'abc123', '45859586-Y','luismartinez@somewhere.com', '1974-06-06', 3);
+('Amanada', 'Fdez','abc123', '36486483-H', 'amanadafdez@somewhere.com', '1954-03-02', 4),
+('Ainoa', 'Fdez','abc123', '36475637-L', 'ainoafdez@somewhere.com', '1943-03-02', 4),
+('Luis', 'Martinez', 'abc123', '45859586-Y','luismartinez@somewhere.com', '1974-06-06', 3),
+('Pepa', 'Perez', 'abc123', '87656783-P','pepaperez@somewhere.com', '1961-06-06', 3),
+('Magdalena', 'Martinez', 'abc123', '6483945-W','magdalenamartinez@somewhere.com', '2001-06-06', 3);
 
--- --------------------------------------------------------
 
 --
 -- Table structure for table `doctors`
@@ -99,11 +103,10 @@ CREATE TABLE IF NOT EXISTS `doctors` (
 
 INSERT INTO `doctors` (`dni`,`colegiatenumber`,`speciality`) VALUES
 ('1223563-W', '2141', 'Cardiologo'),
-('1223563-W', '2142', 'Neumologo'),
-('1223563-W', '2143', 'Otorrino');
+('1223564-W', '2142', 'Neumologo'),
+('1223565-W', '2143', 'Otorrino');
 
-
-----------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `nurseys`
@@ -134,16 +137,16 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `urgencyLevel` tinyint NOT NULL,
   `desease` varchar(29) NOT NULL,
   `historicId` int(11) NOT NULL AUTO_INCREMENT,
-  `create_at` timestamp current_timestamp,
-  PRIMARY KEY (`dni`),
+  `create_at` timestamp,
+  PRIMARY KEY (`historicId`),
   CONSTRAINT `fk_person_patients` FOREIGN KEY (dni) REFERENCES persona(dni)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `patients`
 --
-INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`,`historicId` ) VALUES
-('45859586-Y','3', 'Pulmonia'),
+INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`) VALUES
+('5256458-P','3', 'Pulmonia'),
 ('36486483-H','2', 'Amigdalitis'),
 ('36475637-L', '1', 'Infarto');
 
