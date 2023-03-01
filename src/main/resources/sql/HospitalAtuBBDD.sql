@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `adminId` int(11) NOT NULL AUTO_INCREMENT,
   `userName` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `role` enum ('admin', 'doctor','nursey','patient') NOT NULL,
+  `role` enum ('Admin', 'Doctor','Nursey','Patient') NOT NULL,
   PRIMARY KEY (`adminId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
