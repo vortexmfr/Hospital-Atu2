@@ -10,9 +10,9 @@ public class DataBaseRequest {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/hospitalatu";
+            String url = "jdbc:mysql://localhost:3306/hospital2";
 
-            Connection conexion = DriverManager.getConnection(url, "root", "");
+            Connection conexion = DriverManager.getConnection(url, "root", "dorime");
             System.out.println("Abrierta la conexion ");
             Statement stmt = conexion.createStatement();
             //ResultSet rs = stmt.executeQuery("Select * from persona");
@@ -66,9 +66,9 @@ public class DataBaseRequest {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/hospitalatu";
+          String url = "jdbc:mysql://localhost:3306/hospital2";
 
-            Connection conexion = DriverManager.getConnection(url, "root", "");
+            Connection conexion = DriverManager.getConnection(url, "root", "dorime");
             System.out.println("Abrierta la conexion ");
             Statement stmt = conexion.createStatement();
             //ResultSet rs = stmt.executeQuery("Select * from persona");
@@ -105,9 +105,9 @@ public class DataBaseRequest {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/hospitalatu";
+        String url = "jdbc:mysql://localhost:3306/hospital2";
 
-            Connection conexion = DriverManager.getConnection(url, "root", "");
+            Connection conexion = DriverManager.getConnection(url, "root", "dorime");
             System.out.println("Abrierta la conexion ");
             Statement stmt = conexion.createStatement();
             //ResultSet rs = stmt.executeQuery("Select * from persona");
