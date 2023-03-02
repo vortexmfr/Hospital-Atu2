@@ -216,3 +216,33 @@ CREATE TABLE IF NOT EXISTS `historic` (
 --
 INSERT INTO `historic` (`hitsId`, `historicId`, `doctorId`, `nurseysId`, `deseaseId`, `priority`, `dateIn`, `Dateout`, `diagnosys`, `prescritions`, `ubication`,`surgery`) VALUES
 (1, 1, '2141', '1041', '1','3','2023-01-02','','Bronquitis','Ibuprofeno','Ambulatorio',0);
+
+
+CREATE TABLE IF NOT EXISTS `patientdisease` (
+  `diseaseId` int(11) NOT NULL,
+  `historicId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Dumping data for table `patientdisease`
+--
+
+INSERT INTO `patientdisease` (`diseaseId`, `historicId`) VALUES
+('1', '1');
+
+
+
+CREATE TABLE IF NOT EXISTS `diseasespeciality` (
+  `diseaseId` int(11) NOT NULL,
+  `specialityId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `diseasespeciality`
+--
+
+INSERT INTO `diseasespeciality` (`diseaseId`, `specialityId`) VALUES
+('1', '1'),
+('2', '2'),
+('3', '3');
