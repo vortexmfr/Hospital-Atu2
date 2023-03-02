@@ -6,19 +6,17 @@ public class Main {
         System.out.println("Hello World!");
 
         // Consulta base de datos
-
+        String dni = "1223563-W";
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/hospital2";
 
-            String url = "jdbc:mysql://localhost:3306/hospitalatu";
-
-            Connection conexion = DriverManager.getConnection(url, "root", "");
+            Connection conexion = DriverManager.getConnection(url, "dorime", "dorime");
             System.out.println("Abrierta la conexion ");
             Statement stmt = conexion.createStatement();
             //ResultSet rs = stmt.executeQuery("Select * from persona");
             ResultSet rs = stmt.executeQuery("SELECT persona.dni, firstName,lastName,password,email,birthdate,role,speciality,doctors.colegiatenumber, doctors.create_at \n" +
                     "FROM `persona` INNER JOIN doctors ON persona.dni = doctors.dni \n" +
-                    "WHERE persona.dni = \"1223563-W\"; ");
+                    "WHERE persona.dni = \""+dni+"\"; ");
 
             //Metadatos de la base de datos
             ResultSetMetaData rsmd = rs.getMetaData();
