@@ -1,28 +1,26 @@
 package entity;
 
-import utils.UBICACION;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Persona {
 
     private String dni;
     private String nombre;
     private String apellido;
-    private LocalDate fechaNacimiento;
+    private Date fechaNacimiento;
     private String usuario;
     private String password;
-    private UBICACION estancia;
 
-    public Persona(String dni, String nombre, String apellido, LocalDate fechaNacimiento, String usuario, String password, UBICACION estancia) {
+
+    public Persona(String dni, String nombre, String apellido, Date fechaNacimiento, String usuario, String password) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.usuario = usuario;
         this.password = password;
-        this.estancia = estancia;
     }
+
 
     public String getDni() {
         return dni;
@@ -48,11 +46,11 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -72,11 +70,4 @@ public class Persona {
         this.password = password;
     }
 
-    public UBICACION getEstancia() {
-        return estancia;
-    }
-
-    public void setEstancia(UBICACION estancia) {
-        this.estancia = estancia;
-    }
 }

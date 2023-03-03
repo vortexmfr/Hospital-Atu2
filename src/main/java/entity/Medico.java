@@ -1,16 +1,14 @@
 package entity;
 
-import utils.UBICACION;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Medico extends Persona {
 
     private String numColegiado;
     private String especialidad;
 
-    public Medico(String dni, String nombre, String apellido, LocalDate fechaNacimiento, String usuario, String password, UBICACION estancia, String numColegiado, String especialidad) {
-        super(dni, nombre, apellido, fechaNacimiento, usuario, password, estancia);
+    public Medico(String dni, String nombre, String apellido, Date fechaNacimiento, String usuario, String password, String numColegiado, String especialidad) {
+        super(dni, nombre, apellido, fechaNacimiento, usuario, password);
         this.numColegiado = numColegiado;
         this.especialidad = especialidad;
     }
