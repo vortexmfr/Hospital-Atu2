@@ -14,6 +14,7 @@ public class MedicoDto extends PersonaDto {
         this.speciality = speciality;
     }
 
+
     public String getColegiatenumber() {
         return colegiatenumber;
     }
