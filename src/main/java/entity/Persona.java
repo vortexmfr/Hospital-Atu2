@@ -1,29 +1,30 @@
 package entity;
 
-import utils.UBICACION;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Persona {
 
     private String dni;
-    private String nombre;
-    private String apellido;
-    private LocalDate fechaNacimiento;
-    private String usuario;
+    private String firstName;
+    private String lastName;
+    private Date birthdate;
     private String password;
-    private UBICACION estancia;
+    private String email;
+    private String role;
 
-    public Persona(String dni, String nombre, String apellido, LocalDate fechaNacimiento, String usuario, String password, UBICACION estancia) {
+    public Persona(String dni, String firstName, String lastName, Date birthdate, String password, String email, String role) {
         this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.usuario = usuario;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthdate = birthdate;
         this.password = password;
-        this.estancia = estancia;
+        this.email = email;
+        this.role = role;
     }
 
+    public Persona() {
+    }
+    
     public String getDni() {
         return dni;
     }
@@ -32,36 +33,28 @@ public class Persona {
         this.dni = dni;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getPassword() {
@@ -72,11 +65,22 @@ public class Persona {
         this.password = password;
     }
 
-    public UBICACION getEstancia() {
-        return estancia;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEstancia(UBICACION estancia) {
-        this.estancia = estancia;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    
+    
 }
