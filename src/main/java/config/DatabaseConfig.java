@@ -22,27 +22,25 @@ public class DatabaseConfig {
     private static String url;
     private static String username;
     private static String password;
-    private static String propfileDB = "propfileDB.properties";
+    private static String propfileDB = "file.properties";
     
-    public static Connection getConnection() throws IOException {
+    public static Connection getConnection() throws IOException  {
         try {
-            
-            Properties prop = new Properties();
-            prop.load(new FileInputStream(propfileDB));
-            username = prop.getProperty("username");
-            password = prop.getProperty("password");
-            url = prop.getProperty("url");
-            
             if(connection == null)
-                return initializeConnection();
+                connection = initializeConnection();
             return connection;
         } catch (FileNotFoundException ex) {
             return null;
         }
     }
 
-    private static Connection initializeConnection() {
+    private static Connection initializeConnection() throws IOException{
         try {
+            Properties prop = new Properties();
+            prop.load(new FileInputStream(propfileDB));
+            username = prop.getProperty("username");
+            password = prop.getProperty("password");
+            url = prop.getProperty("url");
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);

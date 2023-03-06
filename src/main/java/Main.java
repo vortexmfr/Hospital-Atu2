@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException{
-        Class.forName("com.mysql.cj.jdbc.Driver");
+       Class.forName("com.mysql.cj.jdbc.Driver");
         System.out.println("Hello World!");
         String sql = "SELECT * FROM persona";
         // Consulta base de datos
