@@ -8,32 +8,45 @@ import dto.PersonaDto;
 import entity.Persona;
 import java.util.ArrayList;
 import java.util.List;
-
+import repository.PersonaRepository;
+import utils.*;
+import utils.RepositoryUtils;
 /**
  *
  * @author Rostro
  */
 public class PersonaService {
-                
-    public static List<PersonaDto> getAll() throws Exception {
+
+    private static PersonaRepository  personaRepository;
+
+    public static void initService() {
+        personaRepository = new PersonaRepository();
+    }
+    
+
+    public List<PersonaDto> getAll() throws Exception {
         List<PersonaDto> lista = new ArrayList<>();
         PersonaDto dto;
-        List<Persona> personas = repository.PersonaRepository.getAll();
-        
+        List<Persona> personas = personaRepository.getAll();
+
         for (Persona persona : personas) {
             dto = toDto(persona);
             lista.add(dto);
         }
-        
+
         return lista;
     }
-    
-    
-    private static PersonaDto toDto(Persona persona) {
+
+    public PersonaDto getById(String dni) throws Exception {
+        Persona persona = repository.PersonaRepository.getById(dni);
+        return toDto(persona);
+    }
+
+    private PersonaDto toDto(Persona persona) {
         return new PersonaDto(persona.getDni(), persona.getFirstName(), persona.getLastName(), persona.getBirthdate(), persona.getPassword(), persona.getEmail(), persona.getRole());
     }
-    
-    private static Persona toEntity(PersonaDto personaDto) {
+
+    private Persona toEntity(PersonaDto personaDto) {
         return new Persona(personaDto.getDni(), personaDto.getFirstName(), personaDto.getLastName(), personaDto.getBirthdate(), personaDto.getPassword(), personaDto.getEmail(), personaDto.getRole());
     }
 }
