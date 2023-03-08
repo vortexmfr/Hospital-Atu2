@@ -4,9 +4,11 @@
  */
 package repository;
 
+import org.apache.commons.lang3.StringUtils;
 import static config.DatabaseConfig.getConnection;
 import entity.Persona;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,6 +20,8 @@ import java.util.List;
  * @author Rostro
  */
 public class PersonaRepository {
+    
+    private final String personaTable = "persona";
 
     public List<Persona> getAll() throws SQLException, ClassNotFoundException, IOException {
         List<Persona> personas = new ArrayList<>();
@@ -39,7 +43,6 @@ public class PersonaRepository {
     public static Persona getById(String dni) throws SQLException, ClassNotFoundException, IOException {
         String sql = "SELECT * FROM persona where dni='" + dni + "'";
         try ( Statement statement = getConnection().createStatement()) {
-            statement.setMaxRows(1);
             ResultSet resultSet = statement.executeQuery(sql);
 
             if (resultSet.next()) {
@@ -55,23 +58,52 @@ public class PersonaRepository {
         }
     }
 
-    public static int update(Persona persona) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "SELECT * FROM persona where dni='" + persona.getDni() + "'";
-        try ( Statement statement = getConnection().createStatement()) {
-            int resultSet = statement.executeUpdate(sql);
+  public boolean update(Persona persona) throws SQLException, ClassNotFoundException, IOException {
+        String sql = "UPDATE  " + personaTable + "( dni=?, firstName=?, lastName=?, birthdate=?, password=?, email=?, role=?) WHERE dni=?";
+       try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+            
+            preparedStatement.setString(1, persona.getDni());
+            preparedStatement.setString(2, persona.getFirstName());
+            preparedStatement.setString(3, persona.getLastName());
+            preparedStatement.setDate(4, new java.sql.Date(persona.getBirthdate().getTime()));
+            preparedStatement.setString(5, persona.getPassword());
+            preparedStatement.setString(6, persona.getEmail());
+            preparedStatement.setString(7, persona.getRole());
+            preparedStatement.setString(8, persona.getDni());
+          //  StringU
+          return  preparedStatement.execute();
 
-            return resultSet;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static int create(Persona persona) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "SELECT * FROM persona where dni='" + persona.getDni() + "'";
-        try ( Statement statement = getConnection().createStatement()) {
-            int resultSet = statement.executeUpdate(sql);
+    public boolean create(Persona persona) throws SQLException, ClassNotFoundException, IOException {
+        String sql = "INSERT INTO " + personaTable + "( dni, firstName, lastName, birthdate, password, email, role) VALUES (?, ?, ?, ?, ?, ?, ?)";
+       try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
-            return resultSet;
+            preparedStatement.setString(1, persona.getDni());
+            preparedStatement.setString(2, persona.getFirstName());
+            preparedStatement.setString(3, persona.getLastName());
+            preparedStatement.setDate(4, new java.sql.Date(persona.getBirthdate().getTime()));
+            preparedStatement.setString(5, persona.getPassword());
+            preparedStatement.setString(6, persona.getEmail());
+            preparedStatement.setString(7, persona.getRole());
+
+          return  preparedStatement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+        public boolean delete(Persona persona) throws SQLException, ClassNotFoundException, IOException {
+        String sql = "DELETE FROM " + personaTable + " WHERE dni=?";
+       try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+
+            preparedStatement.setString(1, persona.getDni());
+          return  preparedStatement.execute();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
