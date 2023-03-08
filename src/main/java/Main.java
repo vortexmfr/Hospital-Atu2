@@ -1,7 +1,10 @@
 
 
 import java.sql.*;
-import static repository.LoginRepository.validateUser;
+
+import static controller.LoginController.UserValidation;
+import static services.LoginService.validateUser;
+
 import dto.PersonaDto;
 import java.util.List;
 import services.PersonaService;
@@ -9,17 +12,18 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, Exception{
 
-        validateUser("1223563-W", "abc123");
+        //validateUser("36475637-L", "abc123");
 
         //Llamamos al controler  (menus, etc)  -> servicio (Logica) -> repository
-        //UserValidation ();
+        UserValidation ();
 
+        /*
         List<PersonaDto> personas = PersonaService.getAll();
         
         for (PersonaDto persona : personas) {
             System.out.println( persona.toString());
         }
-        /*
+
         System.out.println("Hello World!");
         String sql = "SELECT * FROM persona";
         // Consulta base de datos
