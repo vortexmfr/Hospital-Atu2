@@ -1,15 +1,19 @@
-import com.sun.org.apache.xml.internal.security.algorithms.implementations.SignatureDSA;
+
+
 import java.sql.*;
-import static config.DatabaseConfig.getConnection;
+import static repository.LoginRepository.validateUser;
 import dto.PersonaDto;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
 import services.PersonaService;
 public class Main {
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException, Exception{
-        
+
+        validateUser("1223563-W", "abc123");
+
+        //Llamamos al controler  (menus, etc)  -> servicio (Logica) -> repository
+        //UserValidation ();
+
         List<PersonaDto> personas = PersonaService.getAll();
         
         for (PersonaDto persona : personas) {
