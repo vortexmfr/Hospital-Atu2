@@ -32,8 +32,5 @@ public class LoginController {
             default:
                 System.out.println("Usuario no existe");
         }
-
-
     };
-
 }

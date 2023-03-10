@@ -20,7 +20,7 @@ public class LoginRepository {
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                System.out.println(resultSet.getString("role"));
+                //System.out.println(resultSet.getString("role"));
                 role = resultSet.getString("role");
             }
         } catch (SQLException e) {

@@ -5,8 +5,8 @@ import java.util.Date;
 public class PersonaDto {
     
     private String dni;
-    private String firstName;
-    private String lastName;
+    private static String firstName;
+    private static String lastName;
     private Date birthdate;
     private String password;
     private String email;
@@ -33,7 +33,7 @@ public class PersonaDto {
         this.dni = dni;
     }
 
-    public String getFirstName() {
+    public static String getFirstName() {
         return firstName;
     }
 
@@ -41,7 +41,7 @@ public class PersonaDto {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public static String getLastName() {
         return lastName;
     }
 
