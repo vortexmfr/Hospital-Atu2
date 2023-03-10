@@ -59,21 +59,21 @@ public class PersonaRepository {
     }
 
   public boolean update(Persona persona) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "UPDATE  " + personaTable + "( dni=?, firstName=?, lastName=?, birthdate=?, password=?, email=?, role=?) WHERE dni=?";
+        String sql = "UPDATE  " + personaTable + "( firstName=?, lastName=?, birthdate=?, password=?, email=?, role=?) WHERE dni=?";
        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
             
-            preparedStatement.setString(1, persona.getDni());
-            preparedStatement.setString(2, persona.getFirstName());
-            preparedStatement.setString(3, persona.getLastName());
-            preparedStatement.setDate(4, new java.sql.Date(persona.getBirthdate().getTime()));
-            preparedStatement.setString(5, persona.getPassword());
-            preparedStatement.setString(6, persona.getEmail());
-            preparedStatement.setString(7, persona.getRole());
-            preparedStatement.setString(8, persona.getDni());
+            preparedStatement.setString(1, persona.getFirstName());
+            preparedStatement.setString(2, persona.getLastName());
+            preparedStatement.setDate(3, new java.sql.Date(persona.getBirthdate().getTime()));
+            preparedStatement.setString(4, persona.getPassword());
+            preparedStatement.setString(5, persona.getEmail());
+            preparedStatement.setString(6, persona.getRole());
+            preparedStatement.setString(7, persona.getDni());
           //  StringU
           return  preparedStatement.execute();
 
         } catch (SQLException e) {
+            // Mandar menu propio
             throw new RuntimeException(e);
         }
     }

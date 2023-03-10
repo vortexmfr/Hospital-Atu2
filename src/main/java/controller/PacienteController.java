@@ -42,7 +42,6 @@ public class PacienteController {
             pedirPacienteMenu();
         }
         create(paciente);
-        return;
     }
     
     

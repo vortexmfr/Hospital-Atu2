@@ -19,14 +19,14 @@ import utils.UBICACION;
 public class PacienteRepository {
     
     public static List<Paciente> getAll() throws SQLException, ClassNotFoundException, IOException {
-        String sql = "SELECT * FROM persona";
+        String sql = "SELECT * FROM `patients`";
         // Consulta base de datos
         try (Statement statement = getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
-
+            Paciente paciente;
             while (resultSet.next()) {
-                String name = resultSet.getString("firstname");
-                System.out.println(name);
+                paciente = new Paciente(resultSet.getString("dni"), resultSet.getString("historicId"), Integer.parseInt(resultSet.getString("urgencyLevel")) , resultSet.getString("desease"));
+                System.out.println(paciente.toString());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,20 +1,29 @@
 import controller.PacienteController;
 import java.sql.*;
 import dto.PersonaDto;
+import entity.Paciente;
 import entity.Persona;
 import java.util.List;
+import repository.PacienteRepository;
 import repository.PersonaRepository;
 import services.PersonaService;
 import utils.ControllerUtils;
 import utils.ServiceUtils;
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, Exception{
-        ControllerUtils.initControllers();
+        //ControllerUtils.initControllers();
         ServiceUtils.initService();
        new PacienteController().pacienteMenu();
+       
+        /*List<PersonaDto> personas = new PersonaService().getAll();
+       
+        for (PersonaDto persona : personas) {
+            System.out.println( persona.toString());
+        }
         
+        List<Paciente> pacientes = new PacienteRepository().getAll();
         
-        
+        */
         
         /*
        // new PersonaRepository().create(new Persona("dniP2", "dniP", "dniP", new java.util.Date(4, 4, 2021), "dniP", "dniP", "dniP"));
