@@ -158,6 +158,7 @@ INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`) VALUES
 CREATE TABLE IF NOT EXISTS `disease` (
   `diseaseId` int(11) NOT NULL AUTO_INCREMENT,
   `diseaseName` varchar(20) NOT NULL,
+  `diseaseTime` int(11),
   PRIMARY KEY (`diseaseId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -165,10 +166,10 @@ CREATE TABLE IF NOT EXISTS `disease` (
 -- Dumping data for table `disease`
 --
 
-INSERT INTO `disease` (`diseaseId`, `diseaseName`) VALUES
-('1', 'Pulmonia'),
-('2', 'Infarto'),
-('3', 'Amigdalitis');
+INSERT INTO `disease` (`diseaseId`, `diseaseName`,`diseaseTime` ) VALUES
+('1', 'Pulmonia', '3'),
+('2', 'Infarto', '12'),
+('3', 'Amigdalitis', '5');
 
 
 -- --------------------------------------------------------
