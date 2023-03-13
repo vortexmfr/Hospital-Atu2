@@ -1,7 +1,7 @@
 package repository;
 
+import dto.EnfermedadDto;
 import entity.Enfermedad;
-import entity.Medico;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -67,7 +67,7 @@ public class EnfermedadRepository {
         }
     }
 
-    public boolean create(Enfermedad enfermedad) throws SQLException, ClassNotFoundException, IOException {
+    public boolean create(EnfermedadDto enfermedad) throws SQLException, ClassNotFoundException, IOException {
         String sql = "INSERT INTO " + enfermedadTable + "( deseaseId, deseaseName, deseaseTime) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 

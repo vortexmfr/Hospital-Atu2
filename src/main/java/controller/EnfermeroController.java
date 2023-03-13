@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class EnfermeroController {
-    public static void enfermeroMenu() throws IOException {
+    public static void enfermeroMenu() throws Exception {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Enfermero Menu");
@@ -47,6 +47,7 @@ public class EnfermeroController {
                     break;
                 case 7:
                     System.out.println("7");
+                    EnfermedadControler.altaEnfermedad();
                     break;
                 default:
                     System.out.println("Opcion no valida");
