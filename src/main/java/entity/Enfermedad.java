@@ -35,4 +35,13 @@ public class Enfermedad {
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
     }
+
+    @Override
+    public String toString() {
+        return "Enfermedad{" +
+                "id=" + id +
+                ", enfermedad='" + enfermedad + '\'' +
+                ", tiempo=" + tiempo +
+                '}';
+    }
 }

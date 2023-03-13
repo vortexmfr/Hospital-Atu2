@@ -19,13 +19,13 @@ public class EnfermedadRepository {
     public static List<Enfermedad> getAll() throws SQLException, ClassNotFoundException, IOException {
         List<Enfermedad> enfermedades = new ArrayList<>();
         Enfermedad enfermedad;
-        String sql = "SELECT * FROM desease";
+        String sql = "SELECT * FROM disease";
         // Consulta base de datos
         try ( Statement statement = getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
 
-                enfermedad = new Enfermedad(resultSet.getInt("deseaseId"), resultSet.getString("deseaseName"), resultSet.getInt("deseaseTime"));
+                enfermedad = new Enfermedad(resultSet.getInt("diseaseId"), resultSet.getString("diseaseName"), resultSet.getInt("diseaseTime"));
                 enfermedades.add(enfermedad);
                 System.out.println(enfermedad);
             }
@@ -36,13 +36,13 @@ public class EnfermedadRepository {
     }
 
     public static Enfermedad getById(String id) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "SELECT * FROM desease where deseaseId='" + id + "'";
+        String sql = "SELECT * FROM disease where diseaseId='" + id + "'";
 
         try ( Statement statement = getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
 
             if (resultSet.next()) {
-                return (Enfermedad) new Enfermedad( resultSet.getInt("deseaseId"), resultSet.getString("deseaseName"), resultSet.getInt("deseaseTime"));
+                return (Enfermedad) new Enfermedad( resultSet.getInt("diseaseId"), resultSet.getString("diseaseName"), resultSet.getInt("diseaseTime"));
             } else {
                 System.out.println("Sin resultado -> Enfermedad");
             }
@@ -53,13 +53,13 @@ public class EnfermedadRepository {
     }
 
     public boolean update(Enfermedad enfermedad) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "UPDATE  " + enfermedadTable + "( deseaseId=?, deseaseName=?, deseaseTime=?) WHERE deseaseId=?";
+        String sql = "UPDATE  " + enfermedadTable + " SET diseaseId=?, diseaseName=?, diseaseTime=? WHERE diseaseId=?";
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setInt(1, enfermedad.getId());
             preparedStatement.setString(2, enfermedad.getEnfermedad());
             preparedStatement.setInt(3, enfermedad.getTiempo());
-            //  StringU
+            preparedStatement.setInt(4, enfermedad.getId());
             return  preparedStatement.execute();
 
         } catch (SQLException e) {
@@ -67,8 +67,8 @@ public class EnfermedadRepository {
         }
     }
 
-    public boolean create(EnfermedadDto enfermedad) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "INSERT INTO " + enfermedadTable + "( deseaseId, deseaseName, deseaseTime) VALUES (?, ?, ?)";
+    public boolean create(Enfermedad enfermedad) throws SQLException, ClassNotFoundException, IOException {
+        String sql = "INSERT INTO " + enfermedadTable + "( diseaseId, diseaseName, diseaseTime) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setInt(1, enfermedad.getId());
@@ -82,8 +82,8 @@ public class EnfermedadRepository {
         }
     }
 
-    public boolean delete(Enfermedad enfermedad) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "DELETE FROM " + enfermedadTable + " WHERE deseaseId=?";
+    public boolean delete(EnfermedadDto enfermedad) throws SQLException, ClassNotFoundException, IOException {
+        String sql = "DELETE FROM " + enfermedadTable + " WHERE diseaseId=?";
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setInt(1, enfermedad.getId());

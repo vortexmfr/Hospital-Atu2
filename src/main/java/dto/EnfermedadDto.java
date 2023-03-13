@@ -35,4 +35,12 @@ public class EnfermedadDto {
         this.tiempo = tiempo;
     }
 
+    @Override
+    public String toString() {
+        return "EnfermedadDto{" +
+                "id=" + id +
+                ", enfermedad='" + enfermedad + '\'' +
+                ", tiempo=" + tiempo +
+                '}';
+    }
 }
