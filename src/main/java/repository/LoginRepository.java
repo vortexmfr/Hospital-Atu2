@@ -26,7 +26,10 @@ public class LoginRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return role;
+        if (role != null) {
+            return role;
+        } else {
+            return "Other";
+        }
     }
-
 }

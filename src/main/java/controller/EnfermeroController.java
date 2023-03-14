@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import static utils.Utils.askInt;
+
 public class EnfermeroController {
     public static void enfermeroMenu() throws Exception {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
@@ -20,8 +22,7 @@ public class EnfermeroController {
             System.out.println("6 -consultar pacientes");
             System.out.println("7 -Registrar enfermedad");
 
-
-            option = Integer.parseInt(buffer.readLine());
+            option = askInt("");
 
             switch (option) {
                 case 0:
@@ -47,10 +48,11 @@ public class EnfermeroController {
                     break;
                 case 7:
                     System.out.println("7");
-                    EnfermedadControler.altaEnfermedad();
+                    //EnfermedadControler.altaEnfermedad();
+                    EspecialidadController.altaEspecialidad();
                     break;
                 default:
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opción no valida");
                     break;
             }
         } while (option != 0);

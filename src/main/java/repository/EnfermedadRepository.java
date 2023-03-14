@@ -68,17 +68,24 @@ public class EnfermedadRepository {
     }
 
     public boolean create(Enfermedad enfermedad) throws SQLException, ClassNotFoundException, IOException {
-        String sql = "INSERT INTO " + enfermedadTable + "( diseaseId, diseaseName, diseaseTime) VALUES (?, ?, ?)";
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
-            preparedStatement.setInt(1, enfermedad.getId());
-            preparedStatement.setString(2, enfermedad.getEnfermedad());
-            preparedStatement.setInt(3, enfermedad.getTiempo());
+        // Miro que no este creado
+        if( getById(Integer.toString(enfermedad.getId())) != null) {
+            System.out.println("El elemento existe y no se puede crear");
+            return false;
+        } else{
+            String sql = "INSERT INTO " + enfermedadTable + "( diseaseId, diseaseName, diseaseTime) VALUES (?, ?, ?)";
+            try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
-            return  preparedStatement.execute();
+                preparedStatement.setInt(1, enfermedad.getId());
+                preparedStatement.setString(2, enfermedad.getEnfermedad());
+                preparedStatement.setInt(3, enfermedad.getTiempo());
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                return preparedStatement.execute();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

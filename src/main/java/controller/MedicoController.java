@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import static utils.Utils.askInt;
+
 public class MedicoController {
     public static void medicoMenu() throws IOException {
 
@@ -21,7 +23,7 @@ public class MedicoController {
             System.out.println("6 -asignar enfermer@s");
             System.out.println("7 -Registrar enfermedad");
 
-            option = Integer.parseInt(buffer.readLine());
+            option = askInt("");
 
             switch (option) {
                 case 0:

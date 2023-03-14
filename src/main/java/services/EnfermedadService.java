@@ -9,13 +9,8 @@ import java.util.List;
 
 public class EnfermedadService {
 
+    //Inicializo Repository
     private static EnfermedadRepository enfermedadRepository = new EnfermedadRepository();
-
-    /*
-    public static void initService() {
-        enfermedadRepository = new EnfermedadRepository();
-    }
-*/
 
     public List<EnfermedadDto> getAll() throws Exception {
         List<EnfermedadDto> lista = new ArrayList<>();
@@ -36,6 +31,7 @@ public class EnfermedadService {
     }
 
     public void create(EnfermedadDto enfermedad) throws Exception {
+
         enfermedadRepository.create(toEntity(enfermedad));
     }
 
