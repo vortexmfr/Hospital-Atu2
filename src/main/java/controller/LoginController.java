@@ -12,7 +12,7 @@ public class LoginController {
     public static void UserValidation() throws Exception {
         int intentos = 0;
         do {
-            String user = ask("Introduce tu DNI  ********-L", STRING);
+            String user = ask("Introduce tu DNI:", STRING);
             validaDni(user);
             String password = ask("Introduce la password:", STRING);
             intentos++;

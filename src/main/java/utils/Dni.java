@@ -2,6 +2,8 @@ package utils;
 
 import java.io.IOException;
 
+import static java.lang.Character.toUpperCase;
+
 
 public class Dni {
 
@@ -11,13 +13,12 @@ public class Dni {
         String cadena = "";
         int posicion2 = 0;
 
-        String[] parts = dni.split("-");
-        int numDni = Integer.parseInt(parts[0]);
-        char[] letra = parts[1].toUpperCase().toCharArray();
+        int numDni = Integer.parseInt(dni.substring(0, dni.length()-1));//todo el array menos la ultima posicion
+        char[] letra = new char[]{dni.charAt(dni.length() - 1)};
 
         posicion2 = numDni % 23;
 
-        if (letra[0] == arrayLetras[posicion2]) {
+        if (toUpperCase(letra[0]) == arrayLetras[posicion2]) {
             System.out.println("DNI OK");
             return true;
         } else {
@@ -26,4 +27,7 @@ public class Dni {
         }
     }
 }
+
+
+
 
