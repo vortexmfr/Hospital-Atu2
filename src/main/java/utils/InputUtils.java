@@ -18,6 +18,8 @@ public class InputUtils {
     
     public static String validateString(String field){
         String validField = "";
+        // parametro el mensaje sout mensaje
+        // 
         try { 
         switch (field) {
             case "firstName":
