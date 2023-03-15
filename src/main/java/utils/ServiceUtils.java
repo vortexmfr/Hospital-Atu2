@@ -4,6 +4,7 @@
  */
 package utils;
 
+import services.PacienteService;
 import services.PersonaService;
 
 /**
@@ -14,6 +15,7 @@ public class ServiceUtils {
     
     public static void initService(){
         PersonaService.initService();
+        PacienteService.initService();
         
     }
 }

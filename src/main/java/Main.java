@@ -7,23 +7,26 @@ import java.util.List;
 import repository.PacienteRepository;
 import repository.PersonaRepository;
 import services.PersonaService;
+import utils.Constants;
 import utils.ControllerUtils;
 import utils.ServiceUtils;
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, Exception{
-        //ControllerUtils.initControllers();
+        ControllerUtils.initControllers();
         ServiceUtils.initService();
-       new PacienteController().pacienteMenu();
+        
+       //new PacienteController().pacienteMenu();
        
-        /*List<PersonaDto> personas = new PersonaService().getAll();
+        List<PersonaDto> personas = new PersonaService().getAll();
        
         for (PersonaDto persona : personas) {
             System.out.println( persona.toString());
         }
+        System.out.println(Constants.SEPARADOR);
         
-        List<Paciente> pacientes = new PacienteRepository().getAll();
+      //  List<Paciente> pacientes = new PacienteRepository().getAll();
         
-        */
+        
         
         /*
        // new PersonaRepository().create(new Persona("dniP2", "dniP", "dniP", new java.util.Date(4, 4, 2021), "dniP", "dniP", "dniP"));

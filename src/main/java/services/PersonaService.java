@@ -36,6 +36,10 @@ public class PersonaService {
 
         return lista;
     }
+    
+    public boolean createPersona(PersonaDto personaDto) throws Exception {
+        return personaRepository.create(toEntity(personaDto));
+    }
 
     public PersonaDto getById(String dni) throws Exception {
         Persona persona = repository.PersonaRepository.getById(dni);

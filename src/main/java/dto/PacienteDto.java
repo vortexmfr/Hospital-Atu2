@@ -4,9 +4,11 @@ import java.util.Date;
 
 public class PacienteDto extends PersonaDto {
 
-    private String historicId;
+     String dniPersona;
     private Integer urgencyLevel;
-    private String deseaseId;
+    String deseaseId;
+    private String historicId;
+    private String ubication;
 
     public PacienteDto() {
         super();
@@ -17,6 +19,13 @@ public class PacienteDto extends PersonaDto {
         this.historicId = historicId;
         this.urgencyLevel = urgencyLevel;
         this.deseaseId = deseaseId;
+    }
+    
+        public PacienteDto(String dniPersona, String historicId, Integer urgencyLevel, String deseaseId) {
+        this.historicId = historicId;
+        this.urgencyLevel = urgencyLevel;
+        this.deseaseId = deseaseId;
+        this.dniPersona = dniPersona;
     }
 
     public String getHistoricId() {
@@ -41,6 +50,22 @@ public class PacienteDto extends PersonaDto {
 
     public void setDeseaseId(String deseaseId) {
         this.deseaseId = deseaseId;
+    }
+
+    public String getDniPersona() {
+        return dniPersona;
+    }
+
+    public void setDniPersona(String dniPersona) {
+        this.dniPersona = dniPersona;
+    }
+
+    public String getUbication() {
+        return ubication;
+    }
+
+    public void setUbication(String ubication) {
+        this.ubication = ubication;
     }
 
 }

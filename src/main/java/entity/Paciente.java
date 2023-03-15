@@ -11,6 +11,7 @@ public class Paciente extends Persona {
     private Integer urgencyLevel;
     String deseaseId;
     private String historicId;
+    private String ubication;
 
     public Paciente(String dniPersona, String historicId, Integer urgencyLevel, String deseaseId, String firstName, String lastName, Date birthdate, String password, String email, String role) {
         super(dniPersona, firstName, lastName, birthdate, password, email, role);
