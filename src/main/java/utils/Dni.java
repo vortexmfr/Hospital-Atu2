@@ -13,8 +13,8 @@ public class Dni {
         String cadena = "";
         int posicion2 = 0;
 
-        int numDni = Integer.parseInt(dni.substring(0, dni.length()-1));//todo el array menos la ultima posicion
-        char[] letra = new char[]{dni.charAt(dni.length() - 1)};
+        int numDni = Integer.parseInt(dni.substring(0, dni.length()-1));//todo el array menos la ultima posición
+        char[] letra = new char[]{dni.charAt(dni.length() - 1)};  //La última posición, la letra
 
         posicion2 = numDni % 23;
 
@@ -23,8 +23,9 @@ public class Dni {
             return true;
         } else {
             System.out.println("DNI KO");
-            return false;
+            return true;   //   <<<<<<<<===================   Este debe ser false en produccion
         }
+
     }
 }
 

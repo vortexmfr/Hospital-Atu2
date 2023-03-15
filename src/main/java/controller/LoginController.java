@@ -18,13 +18,13 @@ public class LoginController {
             intentos++;
             switch (validateUser(user, password)) {
                 case "doctor":
-                    medicoMenu();
+                    medicoMenu(user);
                     break;
                 case "nursey":
-                    enfermeroMenu();
+                    enfermeroMenu(user);
                     break;
                 case "patient":
-                    pacienteMenu();
+                    pacienteMenu(user);
                     break;
                 default:
                     System.out.println("Usuario no existe");

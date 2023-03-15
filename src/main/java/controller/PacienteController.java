@@ -8,9 +8,7 @@ import static utils.Utils.askInt;
 
 public class PacienteController {
 
-    public static void pacienteMenu() throws IOException {
-
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+    public static void pacienteMenu(String user) throws IOException {
 
         System.out.println("Paciente Menu");
         int option = 0;

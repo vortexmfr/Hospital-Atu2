@@ -24,7 +24,6 @@ DROP TABLE IF EXISTS `patientdisease`;
 DROP TABLE IF EXISTS `disease`;
 DROP TABLE IF EXISTS `diseasespeciality`;
 DROP TABLE IF EXISTS `speciality`;
-DROP TABLE IF EXISTS `patientdisease`;
 DROP TABLE IF EXISTS `admin`;
 DROP TABLE IF EXISTS `patients`;
 DROP TABLE IF EXISTS `persona`;
@@ -73,15 +72,15 @@ CREATE TABLE IF NOT EXISTS `persona` (
 --
 
 INSERT INTO `persona` (`firstName`, `lastName`, `password`,`dni`, `email`,`birthdate`, `role`) VALUES
-('Paco', 'Perez','abc123', '1223563-W','pacoperez@somewhere.com', '1967-12-01', 2),
-('Manuel', 'Puzela','abc123', '1223564-W','manuelpuzela@somewhere.com', '1981-12-01', 2),
-('Margarita', 'Alonso','abc123', '1223565-W','margaritaalonso@somewhere.com', '1973-12-01', 2),
-('Pepe', 'Fdez','abc123', '5256458-P', 'pepefdez@somewhere.com', '1989-03-02', 4),
-('Amanada', 'Fdez','abc123', '36486483-H', 'amanadafdez@somewhere.com', '1954-03-02', 4),
-('Ainoa', 'Fdez','abc123', '36475637-L', 'ainoafdez@somewhere.com', '1943-03-02', 4),
-('Luis', 'Martinez', 'abc123', '45859586-Y','luismartinez@somewhere.com', '1974-06-06', 3),
-('Pepa', 'Perez', 'abc123', '87656783-P','pepaperez@somewhere.com', '1961-06-06', 3),
-('Magdalena', 'Martinez', 'abc123', '6483945-W','magdalenamartinez@somewhere.com', '2001-06-06', 3);
+('Paco', 'Perez','abc123', '1223563W','pacoperez@somewhere.com', '1967-12-01', 'doctor'),
+('Manuel', 'Puzela','abc123', '1223564W','manuelpuzela@somewhere.com', '1981-12-01', 2),
+('Margarita', 'Alonso','abc123', '1223565W','margaritaalonso@somewhere.com', '1973-12-01', 2),
+('Pepe', 'Fdez','abc123', '5256458P', 'pepefdez@somewhere.com', '1989-03-02', 4),
+('Amanada', 'Fdez','abc123', '36486483H', 'amanadafdez@somewhere.com', '1954-03-02', 4),
+('Ainoa', 'Fdez','abc123', '36475637L', 'ainoafdez@somewhere.com', '1943-03-02', 4),
+('Luis', 'Martinez', 'abc123', '45859586Y','luismartinez@somewhere.com', '1974-06-06', 3),
+('Pepa', 'Perez', 'abc123', '87656783P','pepaperez@somewhere.com', '1961-06-06', 3),
+('Magdalena', 'Martinez', 'abc123', '6483945W','magdalenamartinez@somewhere.com', '2001-06-06', 3);
 
 
 --
@@ -102,9 +101,9 @@ CREATE TABLE IF NOT EXISTS `doctors` (
 --
 
 INSERT INTO `doctors` (`dni`,`colegiatenumber`,`speciality`) VALUES
-('1223563-W', '2141', 'Cardiologo'),
-('1223564-W', '2142', 'Neumologo'),
-('1223565-W', '2143', 'Otorrino');
+('1223563W', '2141', 'Cardiologo'),
+('1223564W', '2142', 'Neumologo'),
+('1223565W', '2143', 'Otorrino');
 
 -- --------------------------------------------------------
 
@@ -125,9 +124,9 @@ CREATE TABLE IF NOT EXISTS `nurseys` (
 -- Dumping data for table `nurseys`
 --
 INSERT INTO `nurseys` (`dni`, `colegiatenumber`, `speciality`) VALUES
-('45859586-Y', '1041','UVI'),
-('87656783-P', '1042','REA'),
-('6483945-W', '1043','Planta');
+('45859586Y', '1041','UVI'),
+('87656783P', '1042','REA'),
+('6483945W', '1043','Planta');
 
 -- --------------------------------------------------------
 
@@ -137,6 +136,8 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `urgencyLevel` tinyint NOT NULL,
   `desease` varchar(29) NOT NULL,
   `historicId` int(11) NOT NULL AUTO_INCREMENT,
+  `surgery` bit NOT NULL,
+  `intervention` bit NOT NULL,
   `create_at` timestamp,
   PRIMARY KEY (`historicId`),
   CONSTRAINT `fk_person_patients` FOREIGN KEY (dni) REFERENCES persona(dni)
@@ -145,12 +146,15 @@ CREATE TABLE IF NOT EXISTS `patients` (
 --
 -- Dumping data for table `patients`
 --
-INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`) VALUES
-('5256458-P','3', 'Pulmonia'),
-('36486483-H','2', 'Amigdalitis'),
-('36475637-L', '1', 'Infarto');
+INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`,`surgery`,`intervention` ) VALUES
+('5256458P','3', 'Pulmonia',0,0),
+('36486483H','2', 'Amigdalitis',0,0),
+('36475637L', '1', 'Infarto',0,0);
 
 
+
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `disease`
 --
@@ -172,7 +176,6 @@ INSERT INTO `disease` (`diseaseId`, `diseaseName`,`diseaseTime` ) VALUES
 ('3', 'Amigdalitis', '5');
 
 
--- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `speciality` (
   `specialityId` int(11) NOT NULL AUTO_INCREMENT,
@@ -188,6 +191,17 @@ INSERT INTO `speciality` (`specialityId`, `specialityName`) VALUES
 ('1', 'Neumologia'),
 ('2', 'Cardilogia'),
 ('3', 'Otorrinolaringologia');
+
+INSERT INTO `diseasespeciality` (`specialityId`, `diseaseId`) VALUES
+('1', '1'),
+('2', '2'),
+('3', '3');
+
+CREATE TABLE IF NOT EXISTS `diseasespeciality` (
+  `specialityId` int(11) NOT NULL,
+  `diseaseId` int(11) NOT NULL,
+  CONSTRAINT `fk_disease_speciality` FOREIGN KEY (diseaseId) REFERENCES disease(diseaseId)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 --

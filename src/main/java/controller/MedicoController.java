@@ -1,15 +1,10 @@
 package controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import static utils.Utils.askInt;
 
 public class MedicoController {
-    public static void medicoMenu() throws IOException {
+    public static void medicoMenu(String user) throws Exception {
 
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Medico Menu");
         int option = 0;
@@ -49,6 +44,7 @@ public class MedicoController {
                     break;
                 case 7:
                     System.out.println("7");
+                    EnfermedadControler.altaEnfermedad();
                     break;
                 default:
                     System.out.println("Opción no valida");

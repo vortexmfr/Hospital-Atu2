@@ -22,30 +22,10 @@ public class Main {
             System.out.println(medico.toString());
         }
 
-        System.out.println(MedicoRepository.getById("1223565-W"));
+        //System.out.println(MedicoRepository.getById("1223565-W"));
 
         //Llamamos al controler  (menus, etc)  -> servicio (Logica) -> repository
         UserValidation ();
 
-        /*
-        List<PersonaDto> personas = PersonaService.getAll();
-        
-        for (PersonaDto persona : personas) {
-            System.out.println( persona.toString());
-        }
-
-        System.out.println("Hello World!");
-        String sql = "SELECT * FROM persona";
-        // Consulta base de datos
-        try (Statement statement = getConnection().createStatement()) {
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()) {
-                String name = resultSet.getString("firstname");
-                System.out.println(name);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } */
     }
 }

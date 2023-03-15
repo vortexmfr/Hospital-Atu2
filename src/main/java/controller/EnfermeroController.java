@@ -1,14 +1,12 @@
 package controller;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 import static utils.Utils.askInt;
 
 public class EnfermeroController {
-    public static void enfermeroMenu() throws Exception {
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+    public static void enfermeroMenu(String user) throws Exception {
 
         System.out.println("Enfermero Menu");
         int option = 0;

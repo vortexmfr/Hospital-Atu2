@@ -13,17 +13,20 @@ public class EnfermedadControler {
     private static EnfermedadService enfermedadService = new EnfermedadService();
 
     public static void altaEnfermedad () throws Exception {
+
+        enfermedadService.getAll();
+        System.out.println("=============================================");
         int id = ask("Id de la enfermedad:", INT);
         String enf = ask("Introduce la Enfermedad:", STRING);
         int tiempo = ask("Introduce Tiempo medio de curación:", INT);
 
         EnfermedadDto enfermedadDto = new EnfermedadDto(id,enf,tiempo);
 
-        enfermedadService.getAll();
+        //enfermedadService.getAll();
         enfermedadService.create(enfermedadDto);
         //enfermedadService.getById(String.valueOf(id));
         //enfermedadService.update(enfermedadDto);
-        enfermedadService.getAll();
+        //enfermedadService.getAll();
     };
 
     public static void bajaEnfermedad () throws Exception {
