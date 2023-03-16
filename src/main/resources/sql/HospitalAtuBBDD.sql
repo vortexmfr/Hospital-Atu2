@@ -192,17 +192,19 @@ INSERT INTO `speciality` (`specialityId`, `specialityName`) VALUES
 ('2', 'Cardilogia'),
 ('3', 'Otorrinolaringologia');
 
-INSERT INTO `diseasespeciality` (`specialityId`, `diseaseId`) VALUES
-('1', '1'),
-('2', '2'),
-('3', '3');
 
 CREATE TABLE IF NOT EXISTS `diseasespeciality` (
   `specialityId` int(11) NOT NULL,
   `diseaseId` int(11) NOT NULL,
-  CONSTRAINT `fk_disease_speciality` FOREIGN KEY (diseaseId) REFERENCES disease(diseaseId)
+  PRIMARY KEY (`specialityId`, `diseaseId`),
+  CONSTRAINT `fk_disease_speciality` FOREIGN KEY (diseaseId) REFERENCES disease(diseaseId),
+  CONSTRAINT `fk_speciality_disease` FOREIGN KEY (specialityId) REFERENCES speciality(specialityId)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `diseasespeciality` (`specialityId`, `diseaseId`) VALUES
+('1', '1'),
+('2', '2'),
+('3', '3');
 
 --
 -- Table structure for table `historic`
