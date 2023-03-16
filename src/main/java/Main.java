@@ -1,4 +1,5 @@
 import controller.PacienteController;
+import dto.PacienteDto;
 import java.sql.*;
 import dto.PersonaDto;
 import entity.Paciente;
@@ -6,6 +7,7 @@ import entity.Persona;
 import java.util.List;
 import repository.PacienteRepository;
 import repository.PersonaRepository;
+import services.PacienteService;
 import services.PersonaService;
 import utils.Constants;
 import utils.ControllerUtils;
@@ -18,12 +20,27 @@ public class Main {
        //new PacienteController().pacienteMenu();
        
         List<PersonaDto> personas = new PersonaService().getAll();
+        List<PacienteDto> pacientes = new PacienteService().getAll();
        
         for (PersonaDto persona : personas) {
             System.out.println( persona.toString());
         }
         System.out.println(Constants.SEPARADOR);
-        
+        System.out.println(Constants.SEPARADOR);
+        /*
+        for (PacienteDto paciente : pacientes) {
+            
+            System.out.println( paciente.toString());
+        }
+        /*
+        new PacienteController().createPacienteMenu();
+       
+      /*  personas = new PersonaService().getAll();
+       
+        for (PersonaDto persona : personas) {
+            System.out.println( persona.toString());
+        }
+        System.out.println(Constants.SEPARADOR);
       //  List<Paciente> pacientes = new PacienteRepository().getAll();
         
         

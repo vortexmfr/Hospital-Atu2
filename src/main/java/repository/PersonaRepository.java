@@ -4,7 +4,6 @@
  */
 package repository;
 
-import org.apache.commons.lang3.StringUtils;
 import static config.DatabaseConfig.getConnection;
 import entity.Persona;
 import java.io.IOException;
@@ -14,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -57,7 +57,24 @@ public class PersonaRepository {
             throw new RuntimeException(e);
         }
     }
-
+    
+       public List<Persona> getAllByField(String field, String value) throws SQLException, ClassNotFoundException, IOException {
+        List<Persona> personas = new ArrayList<>();
+           Persona persona;
+           String sql = "SELECT * FROM persona" + (StringUtils.isNotEmpty(field) ? "WHERE " + field + "=" + value : "");
+           // Consulta base de datos
+        try ( Statement statement = getConnection().createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                persona = new Persona(resultSet.getString("dni"), resultSet.getString("firstName"), resultSet.getString("lastName"), resultSet.getDate("birthdate"), resultSet.getString("password"), resultSet.getString("email"), resultSet.getString("role"));
+                personas.add(persona);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return personas;
+    } 
+  
   public boolean update(Persona persona) throws SQLException, ClassNotFoundException, IOException {
         String sql = "UPDATE  " + personaTable + "( firstName=?, lastName=?, birthdate=?, password=?, email=?, role=?) WHERE dni=?";
        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {

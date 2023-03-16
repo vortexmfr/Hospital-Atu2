@@ -41,18 +41,20 @@ public class PacienteController {
             }
         } while (option != 0);
     }
-    
 
-    private void createPacienteMenu() throws IOException, ParseException {
+    public void createPacienteMenu() throws IOException, ParseException, Exception {
         
-         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-         PacienteDto paciente = new PacienteDto();
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+        PacienteDto paciente = new PacienteDto();
+        
         System.out.println(Constants.SEPARADOR);
         System.out.println(Constants.CABECERA_CREAR_PACIENTE);
         System.out.println(Constants.SEPARADOR);
         
         try {
-        System.out.println(Utils.askString(Constants.PACIENTE_DNI));
+        String dni = Utils.askString(Constants.PACIENTE_DNI);
+        paciente.setDni(dni);
+        paciente.setDniPersona(dni);
         paciente.setFirstName(Utils.askString(Constants.PACIENTE_NOMBRE));
         paciente.setLastName(Utils.askString(Constants.PACIENTE_APELLIDO));
         paciente.setBirthdate(new SimpleDateFormat("yyyy-MM-dd").parse(Utils.askString(Constants.PACIENTE_FECHA)));
@@ -64,11 +66,16 @@ public class PacienteController {
             System.out.println("Datos no validos. Vuelva a probar");
             createPacienteMenu();
         }
-        create(paciente);
+        if (create(paciente)){
+            System.out.println(Constants.OK_CREAR);
+        } else {
+            System.out.println(Constants.KO_CREAR);
+        }
+
     }
     
-    private String create(PacienteDto pacienteDto){
-        return "";
+    private boolean create(PacienteDto pacienteDto) throws Exception{
+        return pacienteService.createPaciente(pacienteDto);
     }
     
      public static void initController() {

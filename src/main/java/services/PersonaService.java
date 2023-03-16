@@ -37,6 +37,19 @@ public class PersonaService {
         return lista;
     }
     
+    public List<PersonaDto> getAllByField(String field, String value) throws Exception {
+        List<PersonaDto> lista = new ArrayList<>();
+        PersonaDto dto;
+        List<Persona> personas = personaRepository.getAllByField(field, value);
+
+        for (Persona persona : personas) {
+            dto = toDto(persona);
+            lista.add(dto);
+        }
+
+        return lista;
+    }
+    
     public boolean createPersona(PersonaDto personaDto) throws Exception {
         return personaRepository.create(toEntity(personaDto));
     }

@@ -8,12 +8,12 @@ import java.util.List;
 public class Paciente extends Persona {
 
     String dniPersona;
-    private Integer urgencyLevel;
+    private int urgencyLevel;
     String deseaseId;
-    private String historicId;
+    private int historicId;
     private String ubication;
 
-    public Paciente(String dniPersona, String historicId, Integer urgencyLevel, String deseaseId, String firstName, String lastName, Date birthdate, String password, String email, String role) {
+    public Paciente(String dniPersona, int historicId, int urgencyLevel, String deseaseId, String firstName, String lastName, Date birthdate, String password, String email, String role) {
         super(dniPersona, firstName, lastName, birthdate, password, email, role);
         this.historicId = historicId;
         this.urgencyLevel = urgencyLevel;
@@ -21,7 +21,7 @@ public class Paciente extends Persona {
         this.dniPersona = dniPersona;
     }
 
-    public Paciente(String dniPersona, String historicId, Integer urgencyLevel, String deseaseId) {
+    public Paciente(String dniPersona, int historicId, int urgencyLevel, String deseaseId) {
         this.historicId = historicId;
         this.urgencyLevel = urgencyLevel;
         this.deseaseId = deseaseId;
@@ -41,19 +41,19 @@ public class Paciente extends Persona {
     
     
     
-    public String getHistoricId() {
+    public int getHistoricId() {
         return historicId;
     }
 
-    public void setHistoricId(String historicId) {
+    public void setHistoricId(int historicId) {
         this.historicId = historicId;
     }
 
-    public Integer getUrgencyLevel() {
+    public int getUrgencyLevel() {
         return urgencyLevel;
     }
 
-    public void setUrgencyLevel(Integer urgencyLevel) {
+    public void setUrgencyLevel(int urgencyLevel) {
         this.urgencyLevel = urgencyLevel;
     }
 

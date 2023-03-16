@@ -4,43 +4,43 @@ import java.util.Date;
 
 public class PacienteDto extends PersonaDto {
 
-     String dniPersona;
-    private Integer urgencyLevel;
-    String deseaseId;
-    private String historicId;
+    private String dniPersona;
+    private int urgencyLevel;
+    private String deseaseId;
+    private int historicId;
     private String ubication;
 
     public PacienteDto() {
         super();
     }
 
-    public PacienteDto(String historicId, Integer urgencyLevel, String deseaseId, String dni, String firstName, String lastName, Date birthdate, String password, String email, String role) {
+    public PacienteDto(int historicId, Integer urgencyLevel, String deseaseId, String dni, String firstName, String lastName, Date birthdate, String password, String email, String role) {
         super(dni, firstName, lastName, birthdate, password, email, role);
         this.historicId = historicId;
         this.urgencyLevel = urgencyLevel;
         this.deseaseId = deseaseId;
     }
     
-        public PacienteDto(String dniPersona, String historicId, Integer urgencyLevel, String deseaseId) {
+        public PacienteDto(String dniPersona, int historicId, int urgencyLevel, String deseaseId) {
         this.historicId = historicId;
         this.urgencyLevel = urgencyLevel;
         this.deseaseId = deseaseId;
         this.dniPersona = dniPersona;
     }
 
-    public String getHistoricId() {
+    public int getHistoricId() {
         return historicId;
     }
 
-    public void setHistoricId(String historicId) {
+    public void setHistoricId(int historicId) {
         this.historicId = historicId;
     }
 
-    public Integer getUrgencyLevel() {
+    public int getUrgencyLevel() {
         return urgencyLevel;
     }
 
-    public void setUrgencyLevel(Integer urgencyLevel) {
+    public void setUrgencyLevel(int urgencyLevel) {
         this.urgencyLevel = urgencyLevel;
     }
 
@@ -66,6 +66,11 @@ public class PacienteDto extends PersonaDto {
 
     public void setUbication(String ubication) {
         this.ubication = ubication;
+    }
+
+    @Override
+    public String toString() {
+        return "PacienteDto{" + "dniPersona=" + dniPersona + ", urgencyLevel=" + urgencyLevel + ", deseaseId=" + deseaseId + ", historicId=" + historicId + ", ubication=" + ubication + '}';
     }
 
 }

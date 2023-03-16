@@ -5,16 +5,22 @@
 package utils;
 
 import controller.PacienteController;
+import dto.PersonaDto;
 
 /**
  *
  * @author Rostro
  */
 public class ControllerUtils {
-    
-      public static void initControllers(){
-          PacienteController.initController();
-        
+
+    public static void initControllers() {
+        PacienteController.initController();
+
     }
-    
+
+    public static PersonaDto perdirPersona() {
+
+        return new PersonaDto();
+    }
+
 }
