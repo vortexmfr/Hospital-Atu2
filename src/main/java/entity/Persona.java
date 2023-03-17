@@ -24,7 +24,7 @@ public class Persona {
 
     public Persona() {
     }
-    
+
     public String getDni() {
         return dni;
     }

@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `urgencyLevel` tinyint NOT NULL,
   `desease` varchar(29) NOT NULL,
   `historicId` int(11) NOT NULL AUTO_INCREMENT,
-  `surgery` bit NOT NULL,
+  `status` bit NOT NULL,
   `intervention` bit NOT NULL,
   `create_at` timestamp,
   PRIMARY KEY (`historicId`),

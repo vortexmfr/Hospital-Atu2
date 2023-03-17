@@ -3,10 +3,10 @@ package dto;
 import java.util.Date;
 
 public class PersonaDto {
-    
+
     private String dni;
-    private static String firstName;
-    private static String lastName;
+    private String firstName;
+    private String lastName;
     private Date birthdate;
     private String password;
     private String email;
@@ -24,7 +24,7 @@ public class PersonaDto {
 
     public PersonaDto() {
     }
-    
+
     public String getDni() {
         return dni;
     }
@@ -33,7 +33,7 @@ public class PersonaDto {
         this.dni = dni;
     }
 
-    public static String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -41,7 +41,7 @@ public class PersonaDto {
         this.firstName = firstName;
     }
 
-    public static String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
@@ -86,5 +86,5 @@ public class PersonaDto {
         return "PersonaDto{" + "dni=" + dni + ", firstName=" + firstName + ", lastName=" + lastName + ", birthdate=" + birthdate + ", password=" + password + ", email=" + email + ", role=" + role + '}';
     }
 
-    
+
 }

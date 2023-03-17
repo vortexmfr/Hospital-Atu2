@@ -1,5 +1,7 @@
 package controller;
 
+import services.PacienteService;
+
 import static utils.Utils.askInt;
 
 public class MedicoController {
@@ -38,6 +40,7 @@ public class MedicoController {
                     break;
                 case 5:
                     System.out.println("5");
+                    PacienteService.getAll();
                     break;
                 case 6:
                     System.out.println("6");

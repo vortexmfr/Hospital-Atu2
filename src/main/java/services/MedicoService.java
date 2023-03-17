@@ -39,6 +39,6 @@ public class MedicoService {
     }
 
     private Medico toEntity(MedicoDto medicoDto) {
-        return new Medico(medicoDto.getDni(), MedicoDto.getFirstName(), medicoDto.getLastName(), medicoDto.getBirthdate(), medicoDto.getPassword(), medicoDto.getEmail(), medicoDto.getRole(), medicoDto.getNumColegiado(), medicoDto.getEspecialidad());
+        return new Medico(medicoDto.getDni(), medicoDto.getFirstName(), medicoDto.getLastName(), medicoDto.getBirthdate(), medicoDto.getPassword(), medicoDto.getEmail(), medicoDto.getRole(), medicoDto.getNumColegiado(), medicoDto.getEspecialidad());
     }
 }
