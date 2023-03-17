@@ -5,12 +5,7 @@ import entity.Persona;
 import java.util.ArrayList;
 import java.util.List;
 import repository.PersonaRepository;
-import utils.*;
-import utils.RepositoryUtils;
-/**
- *
- * @author Rostro
- */
+
 public class PersonaService {
 
     private static PersonaRepository  personaRepository;

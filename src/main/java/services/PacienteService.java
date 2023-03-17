@@ -3,14 +3,15 @@ package services;
 import dto.PacienteDto;
 import dto.PersonaDto;
 import entity.Paciente;
-import entity.Persona;
+
 import java.util.ArrayList;
 import java.util.List;
 import repository.PacienteRepository;
 
 public class PacienteService {
 
-    private static PacienteRepository pacienteRepository;
+    private static PacienteRepository pacienteRepository = new PacienteRepository();
+
     private static PersonaService personaService = new PersonaService();
 
     public static void initService() {
@@ -39,15 +40,16 @@ public class PacienteService {
         return lista;
     }
 
-    public List<PacienteDto> getAllByField(String field, String value) throws Exception {
+    public static List<PacienteDto> getAllByField(String field, String value) throws Exception {
         //  List<PacienteDto> personas = personaService.getAllByField(field, value);
 
-        List<PacienteDto> pacientes = getAll();
-//        if (CollectionUtils.is) {
-//        }
+        List<PacienteDto> pacientes = PacienteService.getAll();
+
         // Persona
         for (PacienteDto paciente : pacientes) {
-            PersonaDto persona = personaService.getById(paciente.getDni());
+
+            PersonaDto persona = personaService.getById(paciente.getDniPersona());
+            System.out.println(" Paciente DNI: " + paciente.getDniPersona());
 
             paciente.setFirstName(persona.getFirstName());
             paciente.setLastName(persona.getLastName());
@@ -56,9 +58,11 @@ public class PacienteService {
             paciente.setEmail(persona.getEmail());
             paciente.setRole(persona.getRole());
 
+
             pacientes.add(paciente);
+
         }
-        return pacientes;
+       return pacientes;
     }
 
     private static PacienteDto toDto(Paciente paciente) {

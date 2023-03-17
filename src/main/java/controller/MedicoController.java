@@ -40,7 +40,7 @@ public class MedicoController {
                     break;
                 case 5:
                     System.out.println("5");
-                    PacienteService.getAll();
+                    PacienteService.getAllByField("dni", "07533083P" );
                     break;
                 case 6:
                     System.out.println("6");

@@ -8,13 +8,15 @@ import java.sql.Statement;
 import entity.Persona;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PacienteRepository {
 
     private static final String pacienteTable = "patients";
 
-    public static List<Paciente> getAll() throws SQLException, ClassNotFoundException, IOException {
+    public List<Paciente> getAll() throws SQLException, ClassNotFoundException, IOException {
+        List<Paciente> pacientes = new ArrayList<>();
         String sql = "SELECT * FROM `patients`";
         // Consulta base de datos
         try (Statement statement = getConnection().createStatement()) {
@@ -23,11 +25,12 @@ public class PacienteRepository {
             while (resultSet.next()) {
                 paciente = new Paciente(resultSet.getString("dni"), Integer.parseInt(resultSet.getString("historicId")), Integer.parseInt(resultSet.getString("urgencyLevel")) , resultSet.getString("desease"));
                 System.out.println(paciente.toString());
+                pacientes.add(paciente);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return pacientes;
     }
 
     public boolean create(Paciente paciente) throws SQLException, ClassNotFoundException, IOException {
