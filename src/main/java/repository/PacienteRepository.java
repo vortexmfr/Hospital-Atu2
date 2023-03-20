@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import entity.Persona;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class PacienteRepository {
             Paciente paciente;
             while (resultSet.next()) {
                 paciente = new Paciente(resultSet.getString("dni"), Integer.parseInt(resultSet.getString("historicId")), Integer.parseInt(resultSet.getString("urgencyLevel")) , resultSet.getString("desease"));
-                System.out.println(paciente.toString());
+                //System.out.println(paciente.toString());
                 pacientes.add(paciente);
             }
         } catch (SQLException e) {
@@ -63,4 +65,6 @@ public class PacienteRepository {
             throw new RuntimeException(e);
         }
     }
+
+
 }

@@ -44,24 +44,21 @@ public class PacienteService {
         //  List<PacienteDto> personas = personaService.getAllByField(field, value);
 
         List<PacienteDto> pacientes = PacienteService.getAll();
-
+        int ps = pacientes.size();
         // Persona
-        for (PacienteDto paciente : pacientes) {
+       for (int i = 0; i < ps; i++) {
 
-            PersonaDto persona = personaService.getById(paciente.getDniPersona());
-            System.out.println(" Paciente DNI: " + paciente.getDniPersona());
+            PersonaDto persona = personaService.getById(pacientes.get(i).getDniPersona());
 
-            paciente.setFirstName(persona.getFirstName());
-            paciente.setLastName(persona.getLastName());
-            paciente.setDni(persona.getDni());
-            paciente.setPassword(persona.getPassword());
-            paciente.setEmail(persona.getEmail());
-            paciente.setRole(persona.getRole());
+            pacientes.get(i).setFirstName(persona.getFirstName());
+            pacientes.get(i).setLastName(persona.getLastName());
+            pacientes.get(i).setDni(persona.getDni());
+            pacientes.get(i).setPassword(persona.getPassword());
+            pacientes.get(i).setEmail(persona.getEmail());
+            pacientes.get(i).setRole(persona.getRole());
 
-
-            pacientes.add(paciente);
-
-        }
+            pacientes.add(pacientes.get(i));
+       }
        return pacientes;
     }
 

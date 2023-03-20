@@ -1,6 +1,7 @@
 package services;
 
 import dto.MedicoDto;
+import dto.PacienteDto;
 import entity.Medico;
 import repository.MedicoRepository;
 
@@ -32,6 +33,17 @@ public class MedicoService {
     public MedicoDto getById(String dni) throws Exception {
         Medico medico = repository.MedicoRepository.getById(dni);
         return toDto(medico);
+    }
+
+    public static void imprimirPacientes(String user) throws Exception {
+        List<PacienteDto> pacientes = PacienteService.getAllByField("dni", user );
+
+        for (PacienteDto paciente : pacientes) {
+            System.out.println("DNI: " + paciente.getDni()  + "\tNombre: " + paciente.getFirstName() +
+                    "\tApellido: " + paciente.getLastName()  +  "\tFecha Nacimiento: " + paciente.getBirthdate() + "\tEmail: " + paciente.getEmail() +
+                    "\tUrgencia: " + paciente.getUrgencyLevel()  + "\tEnfermedad: " + paciente.getDeseaseId() +
+                    "\tNHC: " + paciente.getHistoricId()  + "\tUbicación: " + paciente.getUbication());
+        }
     }
 
     private MedicoDto toDto(Medico medico) {

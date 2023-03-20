@@ -22,11 +22,8 @@ public class EnfermedadControler {
 
         EnfermedadDto enfermedadDto = new EnfermedadDto(id,enf,tiempo);
 
-        //enfermedadService.getAll();
         enfermedadService.create(enfermedadDto);
-        //enfermedadService.getById(String.valueOf(id));
-        //enfermedadService.update(enfermedadDto);
-        //enfermedadService.getAll();
+
     };
 
     public static void bajaEnfermedad () throws Exception {
@@ -40,9 +37,6 @@ public class EnfermedadControler {
         EnfermedadDto enfermedadDto = new EnfermedadDto(id,enf,tiempo);
 
         enfermedadService.delete(enfermedadDto);
-
-        //enfermedadService.getById(String.valueOf(id));
-        //enfermedadService.update(enfermedadDto);
         enfermedadService.getAll();
     };
 

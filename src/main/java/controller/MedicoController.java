@@ -1,6 +1,11 @@
 package controller;
 
+import dto.PacienteDto;
+import entity.Paciente;
+import services.MedicoService;
 import services.PacienteService;
+
+import java.util.List;
 
 import static utils.Utils.askInt;
 
@@ -39,14 +44,14 @@ public class MedicoController {
                     System.out.println("4");
                     break;
                 case 5:
-                    System.out.println("5");
-                    PacienteService.getAllByField("dni", "07533083P" );
+                    System.out.println("Listado de Pacientes");
+                    MedicoService.imprimirPacientes(user);
                     break;
                 case 6:
                     System.out.println("6");
                     break;
                 case 7:
-                    System.out.println("7");
+                    System.out.println("Alta Enfermedad");
                     EnfermedadControler.altaEnfermedad();
                     break;
                 default:
@@ -55,4 +60,5 @@ public class MedicoController {
             }
         } while (option != 0);
     }
+
 }
