@@ -20,20 +20,25 @@ public class PacienteDto extends PersonaDto {
         this.urgencyLevel = urgencyLevel;
         this.deseaseId = deseaseId;
     }
-    
-        public PacienteDto(String dniPersona, int historicId, int urgencyLevel, String deseaseId) {
+
+    public PacienteDto(String dniPersona, int historicId, int urgencyLevel, String deseaseId) {
         this.historicId = historicId;
         this.urgencyLevel = urgencyLevel;
         this.deseaseId = deseaseId;
         this.dniPersona = dniPersona;
     }
 
-    public int getHistoricId() {
-        return historicId;
+    @Override
+    public String toString() {
+        return super.toString() + "PacienteDto{" + "dniPersona=" + dniPersona + ", urgencyLevel=" + urgencyLevel + ", deseaseId=" + deseaseId + ", historicId=" + historicId + ", ubication=" + ubication + '}';
     }
 
-    public void setHistoricId(int historicId) {
-        this.historicId = historicId;
+    public String getDniPersona() {
+        return dniPersona;
+    }
+
+    public void setDniPersona(String dniPersona) {
+        this.dniPersona = dniPersona;
     }
 
     public int getUrgencyLevel() {
@@ -52,12 +57,12 @@ public class PacienteDto extends PersonaDto {
         this.deseaseId = deseaseId;
     }
 
-    public String getDniPersona() {
-        return dniPersona;
+    public int getHistoricId() {
+        return historicId;
     }
 
-    public void setDniPersona(String dniPersona) {
-        this.dniPersona = dniPersona;
+    public void setHistoricId(int historicId) {
+        this.historicId = historicId;
     }
 
     public String getUbication() {
@@ -66,11 +71,6 @@ public class PacienteDto extends PersonaDto {
 
     public void setUbication(String ubication) {
         this.ubication = ubication;
-    }
-
-    @Override
-    public String toString() {
-        return "PacienteDto{" + "dniPersona=" + dniPersona + ", urgencyLevel=" + urgencyLevel + ", deseaseId=" + deseaseId + ", historicId=" + historicId + ", ubication=" + ubication + '}';
     }
 
 }

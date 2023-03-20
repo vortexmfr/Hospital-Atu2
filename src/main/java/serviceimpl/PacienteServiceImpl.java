@@ -11,10 +11,11 @@ import repository.PacienteRepository;
 public class PacienteServiceImpl {
 
     private static PacienteRepository pacienteRepository;
-    private static PersonaServiceImpl personaService = new PersonaServiceImpl();
+    private static PersonaServiceImpl personaService;
 
     public static void initService() {
         pacienteRepository = new PacienteRepository();
+        personaService = new PersonaServiceImpl();
     }
 
     public boolean createPaciente(PacienteDto pacienteDto) throws Exception {
@@ -40,25 +41,25 @@ public class PacienteServiceImpl {
     }
 
     public List<PacienteDto> getAllByField(String field, String value) throws Exception {
-      //  List<PacienteDto> personas = personaService.getAllByField(field, value);
-        
+        //  List<PacienteDto> personas = personaService.getAllByField(field, value);
+
         List<PacienteDto> pacientes = getAll();
-//        if (CollectionUtils.is) {    
-//        }
+        int ps = pacientes.size();
         // Persona
-        for (PacienteDto paciente : pacientes) {
-           PersonaDto persona = personaService.getById(paciente.getDni());
-            
-            paciente.setFirstName(persona.getFirstName());
-            paciente.setLastName(persona.getLastName());
-            paciente.setDni(persona.getDni());
-            paciente.setPassword(persona.getPassword());
-            paciente.setEmail(persona.getEmail());
-            paciente.setRole(persona.getRole());
-            
-            pacientes.add(paciente);
-        }
-        return pacientes;
+       for (int i = 0; i < ps; i++) {
+
+            PersonaDto persona = personaService.getById(pacientes.get(i).getDniPersona());
+
+            pacientes.get(i).setFirstName(persona.getFirstName());
+            pacientes.get(i).setLastName(persona.getLastName());
+            pacientes.get(i).setDni(persona.getDni());
+            pacientes.get(i).setPassword(persona.getPassword());
+            pacientes.get(i).setEmail(persona.getEmail());
+            pacientes.get(i).setRole(persona.getRole());
+
+            pacientes.add(pacientes.get(i));
+       }
+       return pacientes;
     }
 
     private PacienteDto toDto(Paciente paciente) {

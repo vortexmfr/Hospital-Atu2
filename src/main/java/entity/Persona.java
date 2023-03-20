@@ -24,7 +24,7 @@ public class Persona {
 
     public Persona() {
     }
-    
+
     public String getDni() {
         return dni;
     }
@@ -81,6 +81,16 @@ public class Persona {
         this.role = role;
     }
 
-    
-    
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "dni='" + dni + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthdate=" + birthdate +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

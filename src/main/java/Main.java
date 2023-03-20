@@ -1,3 +1,4 @@
+import controller.LoginController;
 import controller.PacienteController;
 import dto.PacienteDto;
 import java.sql.*;
@@ -7,34 +8,39 @@ import entity.Persona;
 import java.util.List;
 import repository.PacienteRepository;
 import repository.PersonaRepository;
+import repository.MedicoRepository;
 import serviceimpl.PacienteServiceImpl;
 import serviceimpl.PersonaServiceImpl;
 import utils.Constants;
 import utils.ControllerUtils;
 import utils.ServiceUtils;
+
+import java.sql.SQLException;
+
+import entity.Medico;
+
+import java.util.List;
+
+import repository.MedicoRepository;
+
 public class Main {
     
-    static String  hola = "Jojo Negga";
-    
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, Exception{
+    /*public static void main(String[] args) throws SQLException, ClassNotFoundException, Exception{
+        System.out.println("asd");
+        /*
+        ControllerUtils.initControllers();
+        ServiceUtils.initService();
         
-        //static String hola2 = "Gaslete";
-        //System.out.println("Buenosdias");
-        oe();
-        
-//        ControllerUtils.initControllers();
-//        ServiceUtils.initService();
-//        
-//       //new PacienteController().pacienteMenu();
-//       
-//        List<PersonaDto> personas = new PersonaServiceImpl().getAll();
-//        List<PacienteDto> pacientes = new PacienteServiceImpl().getAll();
-//       
-//        for (PersonaDto persona : personas) {
-//            System.out.println( persona.toString());
-//        }
-//        System.out.println(Constants.SEPARADOR);
-//        System.out.println(Constants.SEPARADOR);
+       //new PacienteController().pacienteMenu();
+       
+        List<PersonaDto> personas = new PersonaServiceImpl().getAll();
+        //List<PacienteDto> pacientes = new PacienteServiceImpl().getAll();
+       
+        for (PersonaDto persona : personas) {
+            System.out.println( persona.toString());
+        }
+        System.out.println(Constants.SEPARADOR);
+        System.out.println(Constants.SEPARADOR);
         /*
         for (PacienteDto paciente : pacientes) {
             
@@ -43,7 +49,7 @@ public class Main {
         /*
         new PacienteController().createPacienteMenu();
        
-      /*  personas = new PersonaService().getAll();
+      /* personas = new PersonaService().getAll();
        
         for (PersonaDto persona : personas) {
             System.out.println( persona.toString());
@@ -78,11 +84,21 @@ public class Main {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } */
-    }
+
     
-    public static void oe(){
-        System.out.println(hola1);
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, Exception{
+
+//        List<Medico> medicos = MedicoRepository.getAll();
+//
+//        for (Medico medico : medicos) {
+//            System.out.println(medico.toString());
+//        }
+
+        //System.out.println(MedicoRepository.getById("1223565-W"));
+
+        //Llamamos al controler  (menus, etc)  -> servicio (Logica) -> repository
+        LoginController.UserValidation();
+
     }
-    
-     static String  hola1 = "Jojo Negga sfasdf";
-}
+    }
+//}

@@ -3,7 +3,7 @@ package dto;
 import java.util.Date;
 
 public class PersonaDto {
-    
+
     private String dni;
     private String firstName;
     private String lastName;
@@ -24,7 +24,7 @@ public class PersonaDto {
 
     public PersonaDto() {
     }
-    
+
     public String getDni() {
         return dni;
     }
@@ -86,5 +86,5 @@ public class PersonaDto {
         return "PersonaDto{" + "dni=" + dni + ", firstName=" + firstName + ", lastName=" + lastName + ", birthdate=" + birthdate + ", password=" + password + ", email=" + email + ", role=" + role + '}';
     }
 
-    
+
 }

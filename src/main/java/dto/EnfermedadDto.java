@@ -1,12 +1,11 @@
-package entity;
+package dto;
 
-public class Enfermedad {
-
+public class EnfermedadDto {
     private int id;
     private String enfermedad;
     private int tiempo;
 
-    public Enfermedad(int id, String enfermedad, int tiempo) {
+    public EnfermedadDto(int id, String enfermedad, int tiempo) {
         this.id = id;
         this.enfermedad = enfermedad;
         this.tiempo = tiempo;
@@ -38,7 +37,7 @@ public class Enfermedad {
 
     @Override
     public String toString() {
-        return "Enfermedad{" +
+        return "EnfermedadDto{" +
                 "id=" + id +
                 ", enfermedad='" + enfermedad + '\'' +
                 ", tiempo=" + tiempo +

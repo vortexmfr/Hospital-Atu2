@@ -39,8 +39,6 @@ public class Paciente extends Persona {
         this.dniPersona = dniPersona;
     }
     
-    
-    
     public int getHistoricId() {
         return historicId;
     }
@@ -69,6 +67,4 @@ public class Paciente extends Persona {
     public String toString() {
         return "Paciente{" + "dniPersona=" + dniPersona + ", urgencyLevel=" + urgencyLevel + ", deseaseId=" + deseaseId + ", historicId=" + historicId + '}';
     }
-    
-    
 }

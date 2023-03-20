@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import serviceimpl.PacienteServiceImpl;
-import serviceimpl.PersonaServiceImpl;
 import utils.Constants;
 import utils.Utils;
 
@@ -15,7 +14,7 @@ public class PacienteController {
     
     private static PacienteServiceImpl  pacienteService;
     
-    public static void pacienteMenu() throws IOException {
+    public static void pacienteMenu(String user) throws IOException {
 
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 
@@ -24,7 +23,6 @@ public class PacienteController {
         do {
             System.out.println(Constants.SALIR_MENU);
             System.out.println("1 -Acceder a su historial medico");
-
 
             option = Utils.askInt("");
 
