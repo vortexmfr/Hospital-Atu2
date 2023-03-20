@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import static utils.Utils.askInt;
 
 public class EnfermeroController {
+
     public static void enfermeroMenu(String user) throws Exception {
 
         System.out.println("Enfermero Menu");
@@ -56,4 +57,3 @@ public class EnfermeroController {
         } while (option != 0);
     }
 }
-

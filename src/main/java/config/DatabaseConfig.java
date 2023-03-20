@@ -17,24 +17,25 @@ import java.util.Properties;
  * @author Rostro
  */
 public class DatabaseConfig {
-    
+
     private static Connection connection;
     private static String url;
     private static String username;
     private static String password;
     private static String propfileDB = "file.properties";
-    
-    public static Connection getConnection() throws IOException  {
+
+    public static Connection getConnection() throws IOException {
         try {
-            if(connection == null)
+            if (connection == null) {
                 connection = initializeConnection();
+            }
             return connection;
         } catch (FileNotFoundException ex) {
             return null;
         }
     }
 
-    private static Connection initializeConnection() throws IOException{
+    private static Connection initializeConnection() throws IOException {
         try {
             Properties prop = new Properties();
             prop.load(new FileInputStream(propfileDB));
@@ -46,10 +47,10 @@ public class DatabaseConfig {
             throw new RuntimeException(e);
         }
     }
-    
-      public static void closeConnection() {
+
+    public static void closeConnection() {
         try {
-        connection.close();
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

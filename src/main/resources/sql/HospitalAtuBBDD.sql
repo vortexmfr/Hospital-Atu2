@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `patients` (
 --
 -- Dumping data for table `patients`
 --
-INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`,`surgery`,`intervention` ) VALUES
+INSERT INTO `patients` (`dni`,`urgencyLevel`,`desease`,`status`,`intervention` ) VALUES
 ('5256458P','3', 'Pulmonia',0,0),
 ('36486483H','2', 'Amigdalitis',0,0),
 ('36475637L', '1', 'Infarto',0,0);

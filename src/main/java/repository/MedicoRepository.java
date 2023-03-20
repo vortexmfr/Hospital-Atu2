@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MedicoRepository {
+
     private final String medicoTable = "medico";
 
     public static List<Medico> getAll() throws SQLException, ClassNotFoundException, IOException {
@@ -26,7 +27,7 @@ public class MedicoRepository {
             while (resultSet.next()) {
 
                 medico = new Medico(resultSet.getString("dni"), resultSet.getString("firstName"), resultSet.getString("lastName"), resultSet.getDate("birthdate"), resultSet.getString("password"), resultSet.getString("email"),
-                                    resultSet.getString("role"), resultSet.getString("colegiatenumber"), resultSet.getString("speciality"));
+                        resultSet.getString("role"), resultSet.getString("colegiatenumber"), resultSet.getString("speciality"));
                 medicos.add(medico);
                 System.out.println(medicos);
             }
@@ -45,7 +46,7 @@ public class MedicoRepository {
             if (resultSet.next()) {
                 return (Medico) new Medico(
                         resultSet.getString("dni"), resultSet.getString("firstName"),
-                        resultSet.getString("lastName"),resultSet.getDate("birthdate"), resultSet.getString("password"),
+                        resultSet.getString("lastName"), resultSet.getDate("birthdate"), resultSet.getString("password"),
                         resultSet.getString("email"), resultSet.getString("role"),
                         resultSet.getString("colegiatenumber"), resultSet.getString("speciality")
                 );
@@ -60,7 +61,7 @@ public class MedicoRepository {
 
     public boolean update(Medico medico) throws SQLException, ClassNotFoundException, IOException {
         String sql = "UPDATE  " + medicoTable + "( dni=?, firstName=?, lastName=?, birthdate=?, password=?, email=?, role=?,colegiatenumber = ?, speciality = ? ) WHERE dni=?";
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setString(1, medico.getDni());
             preparedStatement.setString(2, medico.getFirstName());
@@ -73,7 +74,7 @@ public class MedicoRepository {
             preparedStatement.setString(7, medico.getNumColegiado());
             preparedStatement.setString(8, medico.getEspecialidad());
             //  StringU
-            return  preparedStatement.execute();
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -82,7 +83,7 @@ public class MedicoRepository {
 
     public boolean create(Medico medico) throws SQLException, ClassNotFoundException, IOException {
         String sql = "INSERT INTO " + medicoTable + "( dni, firstName, lastName, birthdate, password, email, role, colegiatenumber,speciality ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setString(1, medico.getDni());
             preparedStatement.setString(2, medico.getFirstName());
@@ -94,7 +95,7 @@ public class MedicoRepository {
             preparedStatement.setString(7, medico.getNumColegiado());
             preparedStatement.setString(8, medico.getEspecialidad());
 
-            return  preparedStatement.execute();
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -103,10 +104,10 @@ public class MedicoRepository {
 
     public boolean delete(Medico medico) throws SQLException, ClassNotFoundException, IOException {
         String sql = "DELETE FROM " + medicoTable + " WHERE dni=?";
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setString(1, medico.getDni());
-            return  preparedStatement.execute();
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

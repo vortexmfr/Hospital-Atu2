@@ -11,11 +11,12 @@ import java.util.Objects;
 import static config.DatabaseConfig.getConnection;
 
 public class LoginRepository {
-    public static String validateUser( String user, String password) throws SQLException, ClassNotFoundException, IOException {
+
+    public static String validateUser(String user, String password) throws SQLException, ClassNotFoundException, IOException {
         String sql = "SELECT role FROM persona where dni = ? and password = ?";
         String role = null;
         // Consulta base de datos
-        try (PreparedStatement statement = Objects.requireNonNull(getConnection()).prepareStatement(sql)) {
+        try ( PreparedStatement statement = Objects.requireNonNull(getConnection()).prepareStatement(sql)) {
             statement.setString(1, user);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();

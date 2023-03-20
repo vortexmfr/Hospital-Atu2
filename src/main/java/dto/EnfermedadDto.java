@@ -1,6 +1,7 @@
 package dto;
 
 public class EnfermedadDto {
+
     private int id;
     private String enfermedad;
     private int tiempo;
@@ -37,10 +38,10 @@ public class EnfermedadDto {
 
     @Override
     public String toString() {
-        return "EnfermedadDto{" +
-                "id=" + id +
-                ", enfermedad='" + enfermedad + '\'' +
-                ", tiempo=" + tiempo +
-                '}';
+        return "EnfermedadDto{"
+                + "id=" + id
+                + ", enfermedad='" + enfermedad + '\''
+                + ", tiempo=" + tiempo
+                + '}';
     }
 }

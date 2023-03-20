@@ -12,18 +12,18 @@ import repository.PersonaRepository;
 import service.PersonaService;
 import utils.*;
 import utils.RepositoryUtils;
+
 /**
  *
  * @author Rostro
  */
 public class PersonaServiceImpl implements PersonaService {
 
-    private static PersonaRepository  personaRepository;
+    private static PersonaRepository personaRepository;
 
     public static void initService() {
         personaRepository = new PersonaRepository();
     }
-    
 
     public List<PersonaDto> getAll() throws Exception {
         List<PersonaDto> lista = new ArrayList<>();
@@ -37,7 +37,7 @@ public class PersonaServiceImpl implements PersonaService {
 
         return lista;
     }
-    
+
     public List<PersonaDto> getAllByField(String field, String value) throws Exception {
         List<PersonaDto> lista = new ArrayList<>();
         PersonaDto dto;
@@ -50,7 +50,7 @@ public class PersonaServiceImpl implements PersonaService {
 
         return lista;
     }
-    
+
     public boolean createPersona(PersonaDto personaDto) throws Exception {
         return personaRepository.create(toEntity(personaDto));
     }

@@ -38,7 +38,7 @@ public class Paciente extends Persona {
     public void setDniPersona(String dniPersona) {
         this.dniPersona = dniPersona;
     }
-    
+
     public int getHistoricId() {
         return historicId;
     }

@@ -10,10 +10,10 @@ import serviceimpl.MedicoServiceImpl;
 import static utils.Utils.askInt;
 
 public class MedicoController {
-    
-    private static final MedicoServiceImpl medicoService = new MedicoServiceImpl();
-    public static void medicoMenu(String user) throws Exception {
 
+    private static final MedicoServiceImpl medicoService = new MedicoServiceImpl();
+
+    public static void medicoMenu(String user) throws Exception {
 
         System.out.println("Medico Menu");
         int option = 0;

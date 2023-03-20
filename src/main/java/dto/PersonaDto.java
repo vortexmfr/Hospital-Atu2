@@ -86,5 +86,4 @@ public class PersonaDto {
         return "PersonaDto{" + "dni=" + dni + ", firstName=" + firstName + ", lastName=" + lastName + ", birthdate=" + birthdate + ", password=" + password + ", email=" + email + ", role=" + role + '}';
     }
 
-
 }

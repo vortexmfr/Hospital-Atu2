@@ -1,6 +1,7 @@
 package entity;
 
 public class Especialidad {
+
     private int id;
     private String especialidad;
 
@@ -27,9 +28,9 @@ public class Especialidad {
 
     @Override
     public String toString() {
-        return "Especialidad{" +
-                "id=" + id +
-                ", especialidad='" + especialidad + '\'' +
-                '}';
+        return "Especialidad{"
+                + "id=" + id
+                + ", especialidad='" + especialidad + '\''
+                + '}';
     }
 }

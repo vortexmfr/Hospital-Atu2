@@ -12,12 +12,13 @@ public class Medico extends Persona {
         this.numColegiado = numColegiado;
         this.especialidad = especialidad;
     }
- /*
+
+    /*
     public Medico(String numColegiado, String especialidad) {
         this.numColegiado = numColegiado;
         this.especialidad = especialidad;
     }
-*/
+     */
     public String getNumColegiado() {
         return numColegiado;
     }
@@ -36,9 +37,9 @@ public class Medico extends Persona {
 
     @Override
     public String toString() {
-        return "Medico{" + super.toString() +
-                "numColegiado='" + numColegiado + '\'' +
-                ", especialidad='" + especialidad + '\'' +
-                '}';
+        return "Medico{" + super.toString()
+                + "numColegiado='" + numColegiado + '\''
+                + ", especialidad='" + especialidad + '\''
+                + '}';
     }
 }

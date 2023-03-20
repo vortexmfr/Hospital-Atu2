@@ -38,10 +38,10 @@ public class Enfermedad {
 
     @Override
     public String toString() {
-        return "Enfermedad{" +
-                "id=" + id +
-                ", enfermedad='" + enfermedad + '\'' +
-                ", tiempo=" + tiempo +
-                '}';
+        return "Enfermedad{"
+                + "id=" + id
+                + ", enfermedad='" + enfermedad + '\''
+                + ", tiempo=" + tiempo
+                + '}';
     }
 }

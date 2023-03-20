@@ -16,6 +16,7 @@ import java.util.List;
 import static config.DatabaseConfig.getConnection;
 
 public class EspecialidadRepository {
+
     private final String especialidadTable = "speciality";
 
     public static List<Especialidad> getAll() throws SQLException, ClassNotFoundException, IOException {
@@ -44,7 +45,7 @@ public class EspecialidadRepository {
             ResultSet resultSet = statement.executeQuery(sql);
 
             if (resultSet.next()) {
-                return (Especialidad) new Especialidad( resultSet.getInt("specialityId"), resultSet.getString("specialityName"));
+                return (Especialidad) new Especialidad(resultSet.getInt("specialityId"), resultSet.getString("specialityName"));
             } else {
                 System.out.println("Sin resultado -> Especialidad");
             }
@@ -56,12 +57,12 @@ public class EspecialidadRepository {
 
     public boolean update(Especialidad especialidad) throws SQLException, ClassNotFoundException, IOException {
         String sql = "UPDATE  " + especialidadTable + " SET specialityId=?, specialityName=? WHERE specialityId=?";
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setInt(1, especialidad.getId());
             preparedStatement.setString(2, especialidad.getEspecialidad());
             preparedStatement.setInt(3, especialidad.getId());
-            return  preparedStatement.execute();
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -71,12 +72,12 @@ public class EspecialidadRepository {
     public boolean create(Especialidad especialidad) throws SQLException, ClassNotFoundException, IOException {
 
         // Miro que no este creado
-        if( getById(Integer.toString(especialidad.getId())) != null) {
+        if (getById(Integer.toString(especialidad.getId())) != null) {
             System.out.println("El elemento existe y no se puede crear");
             return false;
-        } else{
+        } else {
             String sql = "INSERT INTO " + especialidadTable + "( specialityId, specialityName) VALUES (?, ?)";
-            try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+            try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
                 preparedStatement.setInt(1, especialidad.getId());
                 preparedStatement.setString(2, especialidad.getEspecialidad());
@@ -91,10 +92,10 @@ public class EspecialidadRepository {
 
     public boolean delete(EspecialidadDto especialidad) throws SQLException, ClassNotFoundException, IOException {
         String sql = "DELETE FROM " + especialidadTable + " WHERE specialityId=?";
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setInt(1, especialidad.getId());
-            return  preparedStatement.execute();
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

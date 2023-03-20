@@ -9,6 +9,7 @@ import static utils.Types.STRING;
 import static utils.Utils.ask;
 
 public class LoginController {
+
     public static void UserValidation() throws Exception {
         int intentos = 0;
         do {
@@ -30,8 +31,10 @@ public class LoginController {
                     System.out.println("Usuario no existe");
             }
 
-        } while (intentos < 3) ;
+        } while (intentos < 3);
 
-        if (intentos >= 3) { System.out.println("Numero de Intentos excedidos");}
+        if (intentos >= 3) {
+            System.out.println("Numero de Intentos excedidos");
+        }
     }
 }

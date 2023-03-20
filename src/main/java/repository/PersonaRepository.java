@@ -65,12 +65,12 @@ public class PersonaRepository {
             throw new RuntimeException(e);
         }
         return personas;
-    } 
-  
-  public boolean update(Persona persona) throws SQLException, ClassNotFoundException, IOException {
+    }
+
+    public boolean update(Persona persona) throws SQLException, ClassNotFoundException, IOException {
         String sql = "UPDATE  " + personaTable + "( firstName=?, lastName=?, birthdate=?, password=?, email=?, role=?) WHERE dni=?";
-       try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
-            
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+
             preparedStatement.setString(1, persona.getFirstName());
             preparedStatement.setString(2, persona.getLastName());
             preparedStatement.setDate(3, new java.sql.Date(persona.getBirthdate().getTime()));
@@ -78,8 +78,8 @@ public class PersonaRepository {
             preparedStatement.setString(5, persona.getEmail());
             preparedStatement.setString(6, persona.getRole());
             preparedStatement.setString(7, persona.getDni());
-          //  StringU
-          return  preparedStatement.execute();
+            //  StringU
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             // Mandar menu propio
@@ -89,7 +89,7 @@ public class PersonaRepository {
 
     public boolean create(Persona persona) throws SQLException, ClassNotFoundException, IOException {
         String sql = "INSERT INTO " + personaTable + "( dni, firstName, lastName, birthdate, password, email, role) VALUES (?, ?, ?, ?, ?, ?, ?)";
-       try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setString(1, persona.getDni());
             preparedStatement.setString(2, persona.getFirstName());
@@ -99,19 +99,19 @@ public class PersonaRepository {
             preparedStatement.setString(6, persona.getEmail());
             preparedStatement.setString(7, persona.getRole());
 
-          return  preparedStatement.execute();
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    
-        public boolean delete(Persona persona) throws SQLException, ClassNotFoundException, IOException {
+
+    public boolean delete(Persona persona) throws SQLException, ClassNotFoundException, IOException {
         String sql = "DELETE FROM " + personaTable + " WHERE dni=?";
-       try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+        try ( PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
             preparedStatement.setString(1, persona.getDni());
-          return  preparedStatement.execute();
+            return preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

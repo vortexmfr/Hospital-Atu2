@@ -83,14 +83,14 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
-                "dni='" + dni + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthdate=" + birthdate +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+        return "Persona{"
+                + "dni='" + dni + '\''
+                + ", firstName='" + firstName + '\''
+                + ", lastName='" + lastName + '\''
+                + ", birthdate=" + birthdate
+                + ", password='" + password + '\''
+                + ", email='" + email + '\''
+                + ", role='" + role + '\''
+                + '}';
     }
 }

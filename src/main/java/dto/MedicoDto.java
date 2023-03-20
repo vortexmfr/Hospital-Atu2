@@ -15,7 +15,6 @@ public class MedicoDto extends PersonaDto {
         this.especialidad = especialidad;
     }
 
-
     public String getNumColegiado() {
         return numColegiado;
     }
@@ -34,9 +33,9 @@ public class MedicoDto extends PersonaDto {
 
     @Override
     public String toString() {
-        return "MedicoDto{" + super.toString() +
-                "numColegiado='" + numColegiado + '\'' +
-                ", especialidad='" + especialidad + '\'' +
-                '}';
+        return "MedicoDto{" + super.toString()
+                + "numColegiado='" + numColegiado + '\''
+                + ", especialidad='" + especialidad + '\''
+                + '}';
     }
 }

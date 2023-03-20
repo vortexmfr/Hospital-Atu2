@@ -1,6 +1,7 @@
 package dto;
 
 public class EspecialidadDto {
+
     private int id;
     private String especialidad;
 
@@ -27,9 +28,9 @@ public class EspecialidadDto {
 
     @Override
     public String toString() {
-        return "EspecialidadDto{" +
-                "id=" + id +
-                ", especialidad='" + especialidad + '\'' +
-                '}';
+        return "EspecialidadDto{"
+                + "id=" + id
+                + ", especialidad='" + especialidad + '\''
+                + '}';
     }
 }
