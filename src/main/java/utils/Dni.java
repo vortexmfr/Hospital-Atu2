@@ -7,11 +7,13 @@ import static java.lang.Character.toUpperCase;
 
 public class Dni {
 
-    public static boolean validaDni(String dni) throws IOException {
+    public static boolean validaDni(String dniimp) throws IOException {
 
         char[] arrayLetras = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
         String cadena = "";
         int posicion2 = 0;
+
+        String dni  = dniimp.replaceAll("[^A-Za-z0-9]", "");  //Evitar caracteres blancos en el Dni
 
         int numDni = Integer.parseInt(dni.substring(0, dni.length()-1));//todo el array menos la ultima posición
         char[] letra = new char[]{dni.charAt(dni.length() - 1)};  //La última posición, la letra
