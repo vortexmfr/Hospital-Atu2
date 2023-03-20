@@ -1,10 +1,13 @@
 package serviceimpl;
 
 import repository.LoginRepository;
+import repository.PersonaRepository;
 
 public class LoginServiceImpl {
-    public static String validateUser(String user, String pass) throws Exception {
-        return (LoginRepository.validateUser(user, pass));
+
+    private static LoginRepository loginRepository;
+    public String validateUser(String user, String pass) throws Exception {
+        return (loginRepository.validateUser(user, pass));
     }
 
 }

@@ -11,6 +11,7 @@ public class EnfermedadServiceImpl {
 
     //Inicializo Repository
     private static EnfermedadRepository enfermedadRepository = new EnfermedadRepository();
+    private static EnfermedadServiceImpl enfermedadService;
 
     public List<EnfermedadDto> getAll() throws Exception {
         List<EnfermedadDto> lista = new ArrayList<>();
