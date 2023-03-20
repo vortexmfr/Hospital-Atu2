@@ -12,7 +12,7 @@ import utils.Utils;
 
 public class PacienteController {
 
-    private static PacienteServiceImpl pacienteService;
+    private static PacienteServiceImpl pacienteService;      <<<<<===========
 
     public static void pacienteMenu(String user) throws IOException {
 

@@ -3,7 +3,7 @@ package controller;
 import static controller.EnfermeroController.enfermeroMenu;
 import static controller.MedicoController.medicoMenu;
 import static controller.PacienteController.pacienteMenu;
-import static serviceimpl.LoginService.validateUser;
+import static serviceimpl.LoginServiceImpl.validateUser;
 import static utils.Dni.validaDni;
 import static utils.Types.STRING;
 import static utils.Utils.ask;

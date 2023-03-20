@@ -7,7 +7,7 @@ import repository.EspecialidadRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EspecialidadService {
+public class EspecialidadServiceImpl {
 
     private static EspecialidadRepository especialidadRepository = new EspecialidadRepository();
 

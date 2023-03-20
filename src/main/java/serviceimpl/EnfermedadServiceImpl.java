@@ -7,7 +7,7 @@ import repository.EnfermedadRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnfermedadService {
+public class EnfermedadServiceImpl {
 
     //Inicializo Repository
     private static EnfermedadRepository enfermedadRepository = new EnfermedadRepository();

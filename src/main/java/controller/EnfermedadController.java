@@ -1,7 +1,7 @@
 package controller;
 
 import dto.EnfermedadDto;
-import serviceimpl.EnfermedadService;
+import serviceimpl.EnfermedadServiceImpl;
 
 import static utils.Types.INT;
 import static utils.Types.STRING;
@@ -10,7 +10,7 @@ import static utils.Utils.ask;
 public class EnfermedadController {
 
     //Inicializo Service
-    private static EnfermedadService enfermedadService = new EnfermedadService();
+    private static EnfermedadServiceImpl enfermedadService = new EnfermedadServiceImpl();
 
     public static void altaEnfermedad() throws Exception {
 
