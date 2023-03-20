@@ -57,7 +57,7 @@ public class PersonaRepository {
             throw new RuntimeException(e);
         }
     }
-    
+    // Add field status    Only search Personas Active
        public List<Persona> getAllByField(String field, String value) throws SQLException, ClassNotFoundException, IOException {
         List<Persona> personas = new ArrayList<>();
            Persona persona;

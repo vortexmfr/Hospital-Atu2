@@ -1,18 +1,17 @@
-package services;
+package serviceimpl;
 
 import dto.PacienteDto;
 import dto.PersonaDto;
 import entity.Paciente;
-import entity.Persona;
 import java.util.ArrayList;
 import java.util.List;
 import repository.PacienteRepository;
 //import org.apache.commons.lang3.CollectionUtils;
 
-public class PacienteService {
+public class PacienteServiceImpl {
 
     private static PacienteRepository pacienteRepository;
-    private static PersonaService personaService = new PersonaService();
+    private static PersonaServiceImpl personaService = new PersonaServiceImpl();
 
     public static void initService() {
         pacienteRepository = new PacienteRepository();

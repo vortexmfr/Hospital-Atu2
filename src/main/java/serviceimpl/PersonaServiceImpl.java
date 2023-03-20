@@ -2,20 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package services;
+package serviceimpl;
 
 import dto.PersonaDto;
 import entity.Persona;
 import java.util.ArrayList;
 import java.util.List;
 import repository.PersonaRepository;
+import service.PersonaService;
 import utils.*;
 import utils.RepositoryUtils;
 /**
  *
  * @author Rostro
  */
-public class PersonaService {
+public class PersonaServiceImpl implements PersonaService {
 
     private static PersonaRepository  personaRepository;
 

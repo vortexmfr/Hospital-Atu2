@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import services.PacienteService;
-import services.PersonaService;
+import serviceimpl.PacienteServiceImpl;
+import serviceimpl.PersonaServiceImpl;
 import utils.Constants;
 import utils.Utils;
 
 public class PacienteController {
     
-    private static PacienteService  pacienteService;
+    private static PacienteServiceImpl  pacienteService;
     
     public static void pacienteMenu() throws IOException {
 
@@ -79,6 +79,6 @@ public class PacienteController {
     }
     
      public static void initController() {
-        pacienteService = new PacienteService();
+        pacienteService = new PacienteServiceImpl();
     }
 }

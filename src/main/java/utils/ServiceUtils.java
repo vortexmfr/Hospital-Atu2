@@ -4,8 +4,8 @@
  */
 package utils;
 
-import services.PacienteService;
-import services.PersonaService;
+import serviceimpl.PacienteServiceImpl;
+import serviceimpl.PersonaServiceImpl;
 
 /**
  *
@@ -14,8 +14,8 @@ import services.PersonaService;
 public class ServiceUtils {
     
     public static void initService(){
-        PersonaService.initService();
-        PacienteService.initService();
+        PersonaServiceImpl.initService();
+        PacienteServiceImpl.initService();
         
     }
 }
