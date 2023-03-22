@@ -83,7 +83,7 @@ public class PersonaDto {
 
     @Override
     public String toString() {
-        return "PersonaDto{" + "dni=" + dni + ", firstName=" + firstName + ", lastName=" + lastName + ", birthdate=" + birthdate + ", password=" + password + ", email=" + email + ", role=" + role + '}';
+        return "{" + "dni=" + dni + ",\t firstName=" + firstName + ",\t lastName=" + lastName + ",\t birthdate=" + birthdate + ",\t password=" + password + ",\t email=" + email + ",\t role=" + role;
     }
 
 }

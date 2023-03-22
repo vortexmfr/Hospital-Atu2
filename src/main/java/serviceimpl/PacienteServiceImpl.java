@@ -6,17 +6,13 @@ import entity.Paciente;
 import java.util.ArrayList;
 import java.util.List;
 import repository.PacienteRepository;
+import service.PersonaService;
 //import org.apache.commons.lang3.CollectionUtils;
 
 public class PacienteServiceImpl {
 
-    private static PacienteRepository pacienteRepository;
-    private static PersonaServiceImpl personaService;
-
-    public static void initService() {
-        pacienteRepository = new PacienteRepository();
-        personaService = new PersonaServiceImpl();
-    }
+    private final PacienteRepository pacienteRepository = new PacienteRepository();
+    private final PersonaService personaService = new PersonaServiceImpl();
 
     public boolean createPaciente(PacienteDto pacienteDto) throws Exception {
 

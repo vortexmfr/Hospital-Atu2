@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import repository.PersonaRepository;
 import service.PersonaService;
-import utils.*;
-import utils.RepositoryUtils;
 
 /**
  *
@@ -19,12 +17,9 @@ import utils.RepositoryUtils;
  */
 public class PersonaServiceImpl implements PersonaService {
 
-    private static PersonaRepository personaRepository;
+    private final PersonaRepository personaRepository = new PersonaRepository();
 
-    public static void initService() {
-        personaRepository = new PersonaRepository();
-    }
-
+    @Override
     public List<PersonaDto> getAll() throws Exception {
         List<PersonaDto> lista = new ArrayList<>();
         PersonaDto dto;
@@ -38,6 +33,7 @@ public class PersonaServiceImpl implements PersonaService {
         return lista;
     }
 
+    @Override
     public List<PersonaDto> getAllByField(String field, String value) throws Exception {
         List<PersonaDto> lista = new ArrayList<>();
         PersonaDto dto;
@@ -51,10 +47,12 @@ public class PersonaServiceImpl implements PersonaService {
         return lista;
     }
 
+    @Override
     public boolean createPersona(PersonaDto personaDto) throws Exception {
         return personaRepository.create(toEntity(personaDto));
     }
 
+    @Override
     public PersonaDto getById(String dni) throws Exception {
         Persona persona = repository.PersonaRepository.getById(dni);
         return toDto(persona);

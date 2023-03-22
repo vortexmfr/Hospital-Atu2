@@ -30,7 +30,7 @@ public class PacienteDto extends PersonaDto {
 
     @Override
     public String toString() {
-        return super.toString() + "PacienteDto{" + "dniPersona=" + dniPersona + ", urgencyLevel=" + urgencyLevel + ", deseaseId=" + deseaseId + ", historicId=" + historicId + ", ubication=" + ubication + '}';
+        return super.toString() + ",\t urgencyLevel=" + urgencyLevel + ",\t deseaseId=" + deseaseId + ",\t historicId=" + historicId + "}";
     }
 
     public String getDniPersona() {

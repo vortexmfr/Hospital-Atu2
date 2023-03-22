@@ -15,7 +15,7 @@ public class PacienteRepository {
 
     private static final String pacienteTable = "patients";
 
-    public static List<Paciente> getAll() throws SQLException, ClassNotFoundException, IOException {
+    public List<Paciente> getAll() throws SQLException, ClassNotFoundException, IOException {
         List<Paciente> pacientes = new ArrayList<>();
         String sql = "SELECT * FROM `patients`";
         // Consulta base de datos
@@ -24,8 +24,6 @@ public class PacienteRepository {
             Paciente paciente;
             while (resultSet.next()) {
                 paciente = new Paciente(resultSet.getString("dni"), Integer.parseInt(resultSet.getString("historicId")), Integer.parseInt(resultSet.getString("urgencyLevel")), resultSet.getString("desease"));
-                System.out.println(paciente.toString());
-                //System.out.println(paciente.toString());
                 pacientes.add(paciente);
             }
         } catch (SQLException e) {

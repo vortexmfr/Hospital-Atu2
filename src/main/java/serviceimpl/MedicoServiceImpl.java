@@ -38,10 +38,7 @@ public class MedicoServiceImpl {
         List<PacienteDto> pacientes = pacienteService.getAllByField("dni", user );
 
         for (PacienteDto paciente : pacientes) {
-            System.out.println("DNI: " + paciente.getDni()  + "\tNombre: " + paciente.getFirstName() +
-                    "\tApellido: " + paciente.getLastName()  +  "\tFecha Nacimiento: " + paciente.getBirthdate() + "\tEmail: " + paciente.getEmail() +
-                    "\tUrgencia: " + paciente.getUrgencyLevel()  + "\tEnfermedad: " + paciente.getDeseaseId() +
-                    "\tNHC: " + paciente.getHistoricId()  + "\tUbicación: " + paciente.getUbication());
+            System.out.println(paciente.toString());
         }
     }
 

@@ -28,11 +28,11 @@ public class Dni {
                 System.out.println("DNI OK");
                 return true;
             } else {
-                System.out.println("DNI KO");
+                //System.out.println("DNI KO");
                 return true;   //   <<<<<<<<===================   Este debe ser false en produccion
             }
         } catch (Exception ignored) {
-
+            
         }
         return false;
     }
