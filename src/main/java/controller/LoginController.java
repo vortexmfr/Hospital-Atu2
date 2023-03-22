@@ -1,8 +1,6 @@
 package controller;
 
-import static controller.EnfermeroController.enfermeroMenu;
-import static controller.MedicoController.medicoMenu;
-import static controller.PacienteController.pacienteMenu;
+import controller.*;
 import static serviceimpl.LoginServiceImpl.validateUser;
 import static utils.Dni.validaDni;
 import static utils.Types.STRING;
@@ -10,7 +8,10 @@ import static utils.Utils.ask;
 
 public class LoginController {
 
-    public static void UserValidation() throws Exception {
+    private final MedicoController medicoController = new MedicoController();
+    private final EnfermeroController enfermeroController = new EnfermeroController();
+    private final PacienteController pacienteController = new PacienteController();
+    public void UserValidation() throws Exception {
         int intentos = 0;
         do {
             String user = ask("Introduce tu DNI:", STRING);
@@ -19,13 +20,13 @@ public class LoginController {
             intentos++;
             switch (validateUser(user, password)) {
                 case "doctor":
-                    medicoMenu(user);
+                    medicoController.medicoMenu(user);
                     break;
                 case "nursey":
-                    enfermeroMenu(user);
+                    enfermeroController.enfermeroMenu(user);
                     break;
                 case "patient":
-                    pacienteMenu(user);
+                    pacienteController.pacienteMenu(user);
                     break;
                 default:
                     System.out.println("Usuario no existe");

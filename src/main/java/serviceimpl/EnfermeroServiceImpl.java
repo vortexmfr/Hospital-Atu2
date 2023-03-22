@@ -9,13 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnfermeroServiceImpl {
-    private EnfermeroRepository enfermeroRepository;
+    private EnfermeroRepository enfermeroRepository = new EnfermeroRepository();
     private PacienteServiceImpl pacienteService = new PacienteServiceImpl();
-
-    public void initService() {
-        enfermeroRepository = new EnfermeroRepository();
-    }
-
 
     public List<EnfermeroDto> getAll() throws Exception {
         List<EnfermeroDto> lista = new ArrayList<>();

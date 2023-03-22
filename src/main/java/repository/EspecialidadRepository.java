@@ -19,7 +19,7 @@ public class EspecialidadRepository {
 
     private final String especialidadTable = "speciality";
 
-    public static List<Especialidad> getAll() throws SQLException, ClassNotFoundException, IOException {
+    public List<Especialidad> getAll() throws SQLException, ClassNotFoundException, IOException {
         List<Especialidad> especialidades = new ArrayList<>();
         Especialidad especialidad;
         String sql = "SELECT * FROM speciality";
@@ -38,7 +38,7 @@ public class EspecialidadRepository {
         return especialidades;
     }
 
-    public static Especialidad getById(String id) throws SQLException, ClassNotFoundException, IOException {
+    public Especialidad getById(String id) throws SQLException, ClassNotFoundException, IOException {
         String sql = "SELECT * FROM speciality where specialityId='" + id + "'";
 
         try ( Statement statement = getConnection().createStatement()) {

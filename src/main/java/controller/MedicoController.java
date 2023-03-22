@@ -6,25 +6,27 @@ import entity.Paciente;
 import java.util.List;
 import service.MedicoService;
 import serviceimpl.MedicoServiceImpl;
+import utils.Constants;
 
 import static utils.Utils.askInt;
 
 public class MedicoController {
 
-    private static final MedicoServiceImpl medicoService = new MedicoServiceImpl();
+    private final MedicoServiceImpl medicoService = new MedicoServiceImpl();
+    private final EnfermedadController enfermedadController = new EnfermedadController();
 
-    public static void medicoMenu(String user) throws Exception {
+    public void medicoMenu(String user) throws Exception {
 
         System.out.println("Medico Menu");
         int option = 0;
         do {
             System.out.println("0 -Salir del Menu...");
-            System.out.println("1 -Operar");
-            System.out.println("2 -Tratar un paciente ");
-            System.out.println("3 -Recetar");
-            System.out.println("4 -Dar de alta");
+            System.out.println("1 -Operar           NO TERMINADO DE IMPLEMENTAR");
+            System.out.println("2 -Tratar un paciente            NO TERMINADO DE IMPLEMENTAR");
+            System.out.println("3 -Recetar           NO TERMINADO DE IMPLEMENTAR");
+            System.out.println("4 -Dar de alta           NO TERMINADO DE IMPLEMENTAR");
             System.out.println("5 -consultar pacientes");
-            System.out.println("6 -asignar enfermer@s");
+            System.out.println("6 -asignar enfermer@s            NO TERMINADO DE IMPLEMENTAR");
             System.out.println("7 -Registrar enfermedad");
 
             option = askInt("");
@@ -54,12 +56,13 @@ public class MedicoController {
                     break;
                 case 7:
                     System.out.println("Alta Enfermedad");
-                    EnfermedadController.altaEnfermedad();
+                    enfermedadController.altaEnfermedad();
                     break;
                 default:
                     System.out.println("Opción no valida");
                     break;
             }
+            System.out.println("\n" + Constants.SEPARADOR + "\n");
         } while (option != 0);
     }
 

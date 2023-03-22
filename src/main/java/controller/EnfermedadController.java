@@ -1,7 +1,9 @@
 package controller;
 
 import dto.EnfermedadDto;
+import java.util.List;
 import serviceimpl.EnfermedadServiceImpl;
+import service.EnfermedadService;
 
 import static utils.Types.INT;
 import static utils.Types.STRING;
@@ -10,11 +12,11 @@ import static utils.Utils.ask;
 public class EnfermedadController {
 
     //Inicializo Service
-    private static EnfermedadServiceImpl enfermedadService = new EnfermedadServiceImpl();
+    private final EnfermedadService enfermedadService = new EnfermedadServiceImpl();
 
-    public static void altaEnfermedad() throws Exception {
+    public void altaEnfermedad() throws Exception {
 
-        enfermedadService.getAll();
+        List<EnfermedadDto> enfermedades = enfermedadService.getAll();
         System.out.println("=============================================");
         int id = ask("Id de la enfermedad:", INT);
         String enf = ask("Introduce la Enfermedad:", STRING);
@@ -28,7 +30,7 @@ public class EnfermedadController {
 
     ;
 
-    public static void bajaEnfermedad() throws Exception {
+    public void bajaEnfermedad() throws Exception {
 
         enfermedadService.getAll();
 

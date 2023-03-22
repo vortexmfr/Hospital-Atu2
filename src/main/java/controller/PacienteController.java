@@ -22,7 +22,7 @@ public class PacienteController {
         int option = 0;
         do {
             System.out.println(Constants.SALIR_MENU);
-            System.out.println("1 -Acceder a su historial medico");
+            System.out.println("1 -Acceder a su historial medico            NO TERMINADO DE IMPLEMENTAR");
 
             option = Utils.askInt("");
 
@@ -37,6 +37,7 @@ public class PacienteController {
                     System.out.println(Constants.OPCION_NO_VALIDA);
                     break;
             }
+            System.out.println("\n" + Constants.SEPARADOR + "\n");
         } while (option != 0);
     }
 

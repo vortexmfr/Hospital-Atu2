@@ -17,7 +17,7 @@ public class EnfermedadRepository {
 
     private final String enfermedadTable = "disease";
 
-    public static List<Enfermedad> getAll() throws SQLException, ClassNotFoundException, IOException {
+    public List<Enfermedad> getAll() throws SQLException, ClassNotFoundException, IOException {
         List<Enfermedad> enfermedades = new ArrayList<>();
         Enfermedad enfermedad;
         String sql = "SELECT * FROM disease";
@@ -36,7 +36,7 @@ public class EnfermedadRepository {
         return enfermedades;
     }
 
-    public static Enfermedad getById(String id) throws SQLException, ClassNotFoundException, IOException {
+    public Enfermedad getById(String id) throws SQLException, ClassNotFoundException, IOException {
         String sql = "SELECT * FROM disease where diseaseId='" + id + "'";
 
         try ( Statement statement = getConnection().createStatement()) {

@@ -6,12 +6,14 @@ import repository.EnfermedadRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import service.EnfermedadService;
 
-public class EnfermedadServiceImpl {
+public class EnfermedadServiceImpl implements EnfermedadService{
 
     //Inicializo Repository
-    private static EnfermedadRepository enfermedadRepository = new EnfermedadRepository();
+    private EnfermedadRepository enfermedadRepository = new EnfermedadRepository();
 
+    @Override
     public List<EnfermedadDto> getAll() throws Exception {
         List<EnfermedadDto> lista = new ArrayList<>();
         EnfermedadDto dto;
@@ -26,7 +28,7 @@ public class EnfermedadServiceImpl {
     }
 
     public EnfermedadDto getById(String id) throws Exception {
-        Enfermedad enfermedad = repository.EnfermedadRepository.getById(id);
+        Enfermedad enfermedad = enfermedadRepository.getById(id);
         return toDto(enfermedad);
     }
 

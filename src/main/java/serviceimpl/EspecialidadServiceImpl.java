@@ -6,10 +6,11 @@ import repository.EspecialidadRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import service.EspecialidadService;
 
-public class EspecialidadServiceImpl {
+public class EspecialidadServiceImpl implements EspecialidadService{
 
-    private static EspecialidadRepository especialidadRepository = new EspecialidadRepository();
+    private EspecialidadRepository especialidadRepository = new EspecialidadRepository();
 
     public List<EspecialidadDto> getAll() throws Exception {
         List<EspecialidadDto> lista = new ArrayList<>();
@@ -25,7 +26,7 @@ public class EspecialidadServiceImpl {
     }
 
     public EspecialidadDto getById(String id) throws Exception {
-        Especialidad especialidad = repository.EspecialidadRepository.getById(id);
+        Especialidad especialidad = especialidadRepository.getById(id);
         return toDto(especialidad);
     }
 

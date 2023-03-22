@@ -5,23 +5,25 @@ import serviceimpl.MedicoServiceImpl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import utils.Constants;
 
 import static utils.Utils.askInt;
 
 public class EnfermeroController {
 
-    private static final EnfermeroServiceImpl enfermeroService = new EnfermeroServiceImpl();
-    public static void enfermeroMenu(String user) throws Exception {
+    private final EnfermeroServiceImpl enfermeroService = new EnfermeroServiceImpl();
+
+    public void enfermeroMenu(String user) throws Exception {
 
         System.out.println("Enfermero Menu");
         int option = 0;
         do {
             System.out.println("0 -Salir del Menu...");
-            System.out.println("1 -Dar de alta un paciente");
-            System.out.println("2 -Modificar historial paciente");
-            System.out.println("3 -Tratar paciente");
-            System.out.println("4 -Recetar a un paciente");
-            System.out.println("5 -Asignar un medico por especialidad");
+            System.out.println("1 -Dar de alta un paciente           NO TERMINADO DE IMPLEMENTAR");
+            System.out.println("2 -Modificar historial paciente           NO TERMINADO DE IMPLEMENTAR");
+            System.out.println("3 -Tratar paciente           NO TERMINADO DE IMPLEMENTAR");
+            System.out.println("4 -Recetar a un paciente           NO TERMINADO DE IMPLEMENTAR");
+            System.out.println("5 -Asignar un medico por especialidad           NO TERMINADO DE IMPLEMENTAR");
             System.out.println("6 -consultar pacientes");
             System.out.println("7 -Registrar especialidad");
 
@@ -59,6 +61,7 @@ public class EnfermeroController {
                     System.out.println("Opción no valida");
                     break;
             }
+            System.out.println("\n" + Constants.SEPARADOR + "\n");
         } while (option != 0);
     }
 }
