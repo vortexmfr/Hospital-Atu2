@@ -1,7 +1,7 @@
 package controller;
 
 import dto.EspecialidadDto;
-import serviceimpl.EspecialidadService;
+import serviceimpl.EspecialidadServiceImpl;
 
 import static utils.Types.INT;
 import static utils.Types.STRING;
@@ -10,7 +10,7 @@ import static utils.Utils.ask;
 public class EspecialidadController {
 
     //Inicializo Service
-    private static EspecialidadService especialidadService = new EspecialidadService();
+    private static EspecialidadServiceImpl especialidadService = new EspecialidadServiceImpl();
 
     public static void altaEspecialidad() throws Exception {
         int id = ask("Id de la especialidad:", INT);

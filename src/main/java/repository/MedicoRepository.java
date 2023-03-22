@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MedicoRepository {
 
-    private final String medicoTable = "medico";
+    private final String medicoTable = "doctors";
 
     public static List<Medico> getAll() throws SQLException, ClassNotFoundException, IOException {
         List<Medico> medicos = new ArrayList<>();

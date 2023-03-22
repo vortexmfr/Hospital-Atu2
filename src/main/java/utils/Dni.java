@@ -12,22 +12,29 @@ public class Dni {
         char[] arrayLetras = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
         String cadena = "";
         int posicion2 = 0;
+        int numDni;
+        char[] letra;
 
-        String dni  = dniimp.replaceAll("[^A-Za-z0-9]", "");  //Evitar caracteres blancos en el Dni
+        try {
 
-        int numDni = Integer.parseInt(dni.substring(0, dni.length()-1));//todo el array menos la ultima posición
-        char[] letra = new char[]{dni.charAt(dni.length() - 1)};  //La última posición, la letra
+            String dni = dniimp.replaceAll("[^A-Za-z0-9]", "");  //Evitar caracteres blancos en el Dni
 
-        posicion2 = numDni % 23;
+            numDni = Integer.parseInt(dni.substring(0, dni.length() - 1));//todo el array menos la ultima posición
+            letra = new char[]{dni.charAt(dni.length() - 1)};  //La última posición, la letra
 
-        if (toUpperCase(letra[0]) == arrayLetras[posicion2]) {
-            System.out.println("DNI OK");
-            return true;
-        } else {
-            System.out.println("DNI KO");
-            return true;   //   <<<<<<<<===================   Este debe ser false en produccion
+            posicion2 = numDni % 23;
+
+            if (toUpperCase(letra[0]) == arrayLetras[posicion2]) {
+                System.out.println("DNI OK");
+                return true;
+            } else {
+                System.out.println("DNI KO");
+                return true;   //   <<<<<<<<===================   Este debe ser false en produccion
+            }
+        } catch (Exception ignored) {
+
         }
-
+        return false;
     }
 }
 

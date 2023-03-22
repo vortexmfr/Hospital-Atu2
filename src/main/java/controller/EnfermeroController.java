@@ -1,5 +1,8 @@
 package controller;
 
+import serviceimpl.EnfermeroServiceImpl;
+import serviceimpl.MedicoServiceImpl;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -7,6 +10,7 @@ import static utils.Utils.askInt;
 
 public class EnfermeroController {
 
+    private static final EnfermeroServiceImpl enfermeroService = new EnfermeroServiceImpl();
     public static void enfermeroMenu(String user) throws Exception {
 
         System.out.println("Enfermero Menu");
@@ -19,7 +23,7 @@ public class EnfermeroController {
             System.out.println("4 -Recetar a un paciente");
             System.out.println("5 -Asignar un medico por especialidad");
             System.out.println("6 -consultar pacientes");
-            System.out.println("7 -Registrar enfermedad");
+            System.out.println("7 -Registrar especialidad");
 
             option = askInt("");
 
@@ -44,6 +48,7 @@ public class EnfermeroController {
                     break;
                 case 6:
                     System.out.println("6");
+                    enfermeroService.imprimirPacientes(user);
                     break;
                 case 7:
                     System.out.println("7");
